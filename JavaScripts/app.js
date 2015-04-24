@@ -17,5 +17,13 @@ $(window).load(function () {
         rowCount = this.value;
     });
     taskqueueList = ko.observableArray([]);
+    taskNameFilter = ko.observable();
+    taskNameFilter.subscribe(function (oldValue) {
+        if (taskNameFilter.timeOutHandler) clearTimeout(taskNameFilter.timeOutHandler);
+        taskNameFilter.timeOutHandler = setTimeout(function () {
+            //ajax çağırılacak
+            alert("700ms Geçti");
+        }, 700);
+    });
     ko.applyBindings(taskqueueList, $("#Task")[0]);
 })
