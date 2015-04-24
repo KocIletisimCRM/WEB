@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+     <title></title>
+     <meta charset="utf-8">
+     <script src="JavaScripts/jquery-2.1.3.js"></script>
+     <script src="JavaScripts/knockout-3.3.0.js"></script>
+     <script src="JavaScripts/CRMAPI.js"></script>
+     <script src="JavaScripts/app.js"></script>
+     <link href="Content/Maincss.css" rel="stylesheet" />
+ </head>
+<body>
+  <input id="btn" type="button" value="Test"/>
+  <select id="rowCount">
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+  </select>
+  <table id="Task" border="1" style="width:100%">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Site</th>
+                <th>Blok</th>
+                <th>Müşteri Ad Soyad</th>
+                <th>Müşteri Statü</th>
+                <th>Atanma Tarihi</th>
+                <th>Randevu Tarihi</th>
+                <th>Personel</th>
+                <th>Durum</th>
+                <th>Sonlanma Tarihi</th>
+
+            </tr>
+            <tr>
+                <th><input type="text" class="f1" id="f1"/></th>
+                <th><input type="text" class="f1" /></th>
+                <th><input type="text" class="f1" /></th>
+                <th><input type="text" class="f1" /></th>
+                <th><input type="text" class="f1" /></th>
+                <th><input type="text" class="f1" /></th>
+                <th><input type="text" class="f1" /></th>
+                <th><input type="text" class="f1" /></th>
+                <th><input type="text" class="f1" /></th>
+                <th><input type="text" class="f1" /></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ko foreach: taskqueueList -->
+            <tr>
+                <td data-bind="text: task.taskname "></td>
+                <td data-bind="text: attachedobject.block?attachedobject.block.blockname:''"></td>
+                <td data-bind="text: attachedobject.block.site?attachedobject.block.site.sitename:''"></td>
+                <td data-bind="text: attachedobject.customername+' '+attachedobject.customersurname"></td>
+                <td data-bind="text: attachedobject.customer_status"></td>
+                <td data-bind="text: attachmentdate"></td>
+                <td data-bind="text: appointmentdate"></td>
+                <td data-bind="text: attachedpersonel?attachedpersonel.personelname:''"></td>
+                <td data-bind="text: taskstatepool?taskstatepool.taskstate:''"></td>
+                <td data-bind="text: consummationdate"></td>
+
+            </tr>
+            <!-- /ko -->
+        </tbody>
+  </table>
+</body>
+</html>
