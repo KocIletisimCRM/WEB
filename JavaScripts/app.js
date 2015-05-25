@@ -7,7 +7,8 @@ $(window).load(function () {
         CRMAPI.getTaskQueues(10, rowCount, {}, function (a, b, c) {
             taskqueueList(a);
         }, function () { });
-    });
+    }); 
+    
     $("#f1").change( function () {
         CRMAPI.getTaskQueues(10, rowCount, { TaskIds: null, TaskName:$("#f1").val(), TaskTypeIds: null, TaskTypeName: null }, function (a, b, c) {
             taskqueueList(a);
@@ -16,6 +17,8 @@ $(window).load(function () {
     $('#rowCount').on('change', function () {
         rowCount = this.value;
     });
+
+ 
     taskqueueList = ko.observableArray([]);
     taskNameFilter = ko.observable();
     taskNameFilter.subscribe(function (oldValue) {

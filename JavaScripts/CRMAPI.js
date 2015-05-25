@@ -21,5 +21,34 @@
                 })
             }
         };
+
+
+       
+
+    })();
+
+    window.CRMAPI=(function(){
+        baseURI="http://localhost:50752/api";
+        return{
+            findCustomer:function(cname, onsuccess, onerror) {
+
+                $.ajax({
+                    url: baseURI + "/Nakil/findCustomer",
+                    method: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({ cname: cname })
+                })
+                    .fail(function () {
+                        if (onerror) onerror();
+                    })
+                    .success(function (a, b, c) {
+                        if (onsuccess) onsuccess(a, b, c);
+                    })
+                    .complete(function () {
+                    })
+            
+            }
+        };
+
     })();
 }

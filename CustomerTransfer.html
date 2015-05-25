@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <script src="JavaScripts/jquery-2.1.3.js"></script>
+    <script src="JavaScripts/knockout-3.3.0.js"></script>
+    <script src="JavaScripts/CRMAPI.js"></script>
+    <script src="JavaScripts/app.js"></script>
+    <link href="Content/main.css" rel="stylesheet" />
+    <link href="Content/menu.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+    <input id="btn" type="button" value="Test" />
+    <tbody>
+        <!-- ko foreach: CustomerList -->
+        <tr>
+            <td data-bind="text:customer.customerid"></td>
+            <td data-bind="text:customer.customername"></td>
+            <td data-bind="text:customer.customersurname"></td>
+           
+        </tr>
+        <!-- /ko -->
+    </tbody>
+</body>
+</html>
