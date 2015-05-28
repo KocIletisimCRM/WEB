@@ -33,10 +33,11 @@
             findCustomer:function(cname, onsuccess, onerror) {
 
                 $.ajax({
-                    url: baseURI + "/Nakil/findCustomer",
-                    method: "POST",
+                    url: baseURI + "/Nakil/findCustomer?cname="+cname,
+                    method: "GET",
                     contentType: "application/json",
-                    data: JSON.stringify({ cname: cname })
+                    
+                    
                 })
                     .fail(function () {
                         if (onerror) onerror();

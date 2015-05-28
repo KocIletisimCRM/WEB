@@ -4,9 +4,7 @@
 var rowCount = 25;
 $(window).load(function () {
     $("#btn").click(function () {
-        CRMAPI.getTaskQueues(10, rowCount, {}, function (a, b, c) {
-            taskqueueList(a);
-        }, function () { });
+        CRMAPI.getTaskQueues(10, rowCount, {}, function (a, b, c) {taskqueueList(a);}, function () { });
     }); 
     
     $("#f1").change( function () {
