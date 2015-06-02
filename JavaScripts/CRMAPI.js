@@ -27,29 +27,29 @@
 
     })();
 
-    window.CRMAPI=(function(){
-        baseURI="http://localhost:50752/api";
-        return{
-            findCustomer:function(cname, onsuccess, onerror) {
+    //window.CRMAPI=(function(){
+    //    baseURI="http://localhost:50752/api";
+    //    return{
+    //        findCustomer:function(cname, onsuccess, onerror) {
 
-                $.ajax({
-                    url: baseURI + "/Nakil/findCustomer?cname="+cname,
-                    method: "GET",
-                    contentType: "application/json",
+    //            $.ajax({
+    //                url: baseURI + "/Nakil/findCustomer?cname="+cname,
+    //                method: "GET",
+    //                contentType: "application/json",
                     
                     
-                })
-                    .fail(function () {
-                        if (onerror) onerror();
-                    })
-                    .success(function (a, b, c) {
-                        if (onsuccess) onsuccess(a, b, c);
-                    })
-                    .complete(function () {
-                    })
+    //            })
+    //                .fail(function () {
+    //                    if (onerror) onerror();
+    //                })
+    //                .success(function (a, b, c) {
+    //                    if (onsuccess) onsuccess(a, b, c);
+    //                })
+    //                .complete(function () {
+    //                })
             
-            }
-        };
+    //        }
+    //    };
 
-    })();
+    //})();
 }

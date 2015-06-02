@@ -1,41 +1,100 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>MÜŞTERİ NAKİL İŞLEMLERİ</title>
     <meta charset="utf-8">
     <script src="JavaScripts/jquery-2.1.3.js"></script>
     <script src="JavaScripts/knockout-3.3.0.js"></script>
-    <script src="JavaScripts/CRMAPI.js"></script>
-
+    <script src="JavaScripts/CustomerTransferApi.js"></script>
     <script src="JavaScripts/CustomerMV.js"></script>
-    <link href="Content/main.css" rel="stylesheet" />
-    <link href="Content/menu.css" rel="stylesheet" />
-
+    <link rel="stylesheet/less" type="text/css" href="Content/style.less" />
+    <script type="text/javascript"  src="JavaScripts/less.js"></script>
 
 </head>
-<body>
-  
-    <button data-bind="click : getir">Getir</button>
 
+<body >
+    <style>
+        #customer {cursor: pointer;}
+         #customer tr:hover {  background: #e16161;  }
+        .selected { background: #ff6a00;   }
+    </style>
 
-
-    <!--<table id="Customer" border="1" style="width:50%">
-        <thead>
-            <tr>
-                <th>customername</th>
-                <th>customersurname</th>
-            </tr>
-            <tr>
-            
-        </thead>
-        <tbody>
-             ko foreach: customerList 
-            <tr>
-                <td data-bind="text: customername "></td>
-                <td data-bind="text: customerSurname "></td>
-            </tr>
+    <div>
+        <p></p>
       
-        </tbody>
-    </table>-->
+    </div>
+
+    <center>
+        <div id="formpaneli">
+            
+                <h3 color:#ffffff> Müşteri Taşıma İşlemleri</h3>
+                <input type="text" id="input" placeholder="Müşteri Adı Giriniz..." data-bind="value:cname, valueUpdate: 'keydown', event:{ keypress: getCustomer}" />
+                <button id="input" data-bind="click : getCustomer"> Müşteri Ara</button>
+
+                <br />
+                <select id="input" data-bind="options:sList,
+                       optionsText: 'sitename',
+                       optionsValue: 'siteid',
+                       value:selectedSiteValue,
+                       optionsCaption: 'Taşımak İstediğiniz Siteyi Seçiniz...'"></select>
+
+
+
+                <select id="input" data-bind="options:bList,
+                       optionsText:'blockname',
+                       
+                       visible:selectedSiteValue,
+                       optionsValue:'blockid',
+                       value: selectedBlockValue,
+                       optionsCaption: 'Bloğu Seçiniz...'"></select>
+
+
+            <select id="input" data-bind="options:flatList,
+                                          optionsText: 'flatinfo1',
+                                          visible:selectedBlockValue,
+                                          optionValue:'flat',
+                                          value:selectedFlatValue,
+                                          optionsCaption: 'Daire Seçiniz...',style: { color:selectedFlatValue > 5?'red':'black'} "></select>
+
+            
+       
+
+            <input id="input " type="submit" data-bind="click : toJSON,visible:selectedBlockValue" value="Gönder">
+
+            
+        </div>
+
+        <form id="form" data-bind="visible:cname">
+            <table border="1" id="customer" data-bind="visible:cname">
+                <thead>
+                    <tr>
+                        <th>Müşteri ID</th>
+                        <th>Müşteri ismi</th>
+                        <th>Site Adı</th>
+                        <th>Blok Adı</th>
+                        <th>Daire</th>
+                        <th>GSM</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: cList ">
+                    <tr data-bind="click: function(data, evt){ $parent.select(data, evt);}">
+                        <td data-bind="text:customerid"></td>
+                        <td data-bind="text:customerinfo1"></td>
+                        <td data-bind="text:sitename"></td>
+                        <td data-bind="text:blockname"></td>
+                        <td data-bind="text:flat"></td>
+                        <td data-bind="text:gsm"></td>
+
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </center>
+
+
+
+
 </body>
 </html>
