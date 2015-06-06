@@ -9,7 +9,7 @@
     <script src="JavaScripts/CustomerMV.js"></script>
     <link rel="stylesheet/less" type="text/css" href="Content/style.less" />
     <script type="text/javascript"  src="JavaScripts/less.js"></script>
-
+    
 </head>
 
 <body >
@@ -18,18 +18,17 @@
          #customer tr:hover {  background: #e16161;  }
         .selected { background: #ff6a00;   }
     </style>
-
-    <div>
-        <p></p>
-      
-    </div>
-
     <center>
         <div id="formpaneli">
             
                 <h3 color:#ffffff> Müşteri Taşıma İşlemleri</h3>
                 <input type="text" id="input" placeholder="Müşteri Adı Giriniz..." data-bind="value:cname, valueUpdate: 'keydown', event:{ keypress: getCustomer}" />
                 <button id="input" data-bind="click : getCustomer"> Müşteri Ara</button>
+
+                <input id="pasive" type="checkbox"   data-bind="checked:control"/>
+                 <span id="input">Müşteriyi Pasife çekmek için tıklayınız.</span>
+                <button id="input" style="color:#ff0000" data-bind="click:pasiveCustomer ,visible:control">Müşteriyi Pasife çek</button>
+                
 
                 <br />
                 <select id="input" data-bind="options:sList,
@@ -42,7 +41,6 @@
 
                 <select id="input" data-bind="options:bList,
                        optionsText:'blockname',
-                       
                        visible:selectedSiteValue,
                        optionsValue:'blockid',
                        value: selectedBlockValue,
@@ -52,16 +50,17 @@
             <select id="input" data-bind="options:flatList,
                                           optionsText: 'flatinfo1',
                                           visible:selectedBlockValue,
-                                          optionValue:'flat',
+                                          optionsValue:'flat',
                                           value:selectedFlatValue,
-                                          optionsCaption: 'Daire Seçiniz...',style: { color:selectedFlatValue > 5?'red':'black'} "></select>
+                                          optionsCaption: 'Daire Seçiniz...',"></select>
 
-            
-       
+
+
 
             <input id="input " type="submit" data-bind="click : toJSON,visible:selectedBlockValue" value="Gönder">
 
-            
+
+
         </div>
 
         <form id="form" data-bind="visible:cname">
