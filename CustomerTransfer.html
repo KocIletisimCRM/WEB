@@ -22,49 +22,50 @@
         <div id="formpaneli">
             
                 <h3 color:#ffffff> Müşteri Taşıma İşlemleri</h3>
-                <input type="text" id="input" placeholder="Müşteri Adı Giriniz..." data-bind="value:cname, valueUpdate: 'keydown', event:{ keypress: getCustomer}" />
-                <button id="input" data-bind="click : getCustomer"> Müşteri Ara</button>
+                <div style="background:#808080" data-bind="visible: resultmessage != null, text: resultmessage"></div>
+                <input type="text" id="input" placeholder="Müşteri Adı Giriniz..." data-bind="value: cname, valueUpdate: 'keydown', event: { keypress: getCustomer }" />
+                <button id="Button1" data-bind="click: getCustomer"> Müşteri Ara</button>
 
-                <input id="pasive" type="checkbox"   data-bind="checked:control"/>
-                 <span id="input">Müşteriyi Pasife çekmek için tıklayınız.</span>
-                <button id="input" style="color:#ff0000" data-bind="click:pasiveCustomer ,visible:control">Müşteriyi Pasife çek</button>
-                
+                <input id="pasive" type="checkbox"   data-bind="checked: control"/>
+                 <span id="Span1">Müşteriyi Pasife çekmek için tıklayınız.</span>
+                <button id="Button2" style="color:#ff0000" data-bind="click: pasiveCustomer, visible: control">Müşteriyi Pasife çek</button>
+
 
                 <br />
-                <select id="input" data-bind="options:sList,
-                       optionsText: 'sitename',
-                       optionsValue: 'siteid',
-                       value:selectedSiteValue,
-                       optionsCaption: 'Taşımak İstediğiniz Siteyi Seçiniz...'"></select>
+                <select id="Select1" data-bind="options: sList,
+    optionsText: 'sitename',
+    optionsValue: 'siteid',
+    value: selectedSiteValue,
+    optionsCaption: 'Taşımak İstediğiniz Siteyi Seçiniz...'"></select>
 
 
 
-                <select id="input" data-bind="options:bList,
-                       optionsText:'blockname',
-                       visible:selectedSiteValue,
-                       optionsValue:'blockid',
-                       value: selectedBlockValue,
-                       optionsCaption: 'Bloğu Seçiniz...'"></select>
+                <select id="Select2" data-bind="options: bList,
+    optionsText: 'blockname',
+    visible: selectedSiteValue,
+    optionsValue: 'blockid',
+    value: selectedBlockValue,
+    optionsCaption: 'Bloğu Seçiniz...'"></select>
 
 
-            <select id="input" data-bind="options:flatList,
-                                          optionsText: 'flatinfo1',
-                                          visible:selectedBlockValue,
-                                          optionsValue:'flat',
-                                          value:selectedFlatValue,
-                                          optionsCaption: 'Daire Seçiniz...',"></select>
+            <select id="Select3" data-bind="options: flatList,
+    optionsText: 'flatinfo1',
+    visible: selectedBlockValue,
+    optionsValue: 'flat',
+    value: selectedFlatValue,
+    optionsCaption: 'Daire Seçiniz...',"></select>
 
 
 
 
-            <input id="input " type="submit" data-bind="click : toJSON,visible:selectedBlockValue" value="Gönder">
+            <input id="input " type="submit" data-bind="click: toJSON, visible: selectedBlockValue" value="Gönder">
 
 
 
         </div>
 
-        <form id="form" data-bind="visible:cname">
-            <table border="1" id="customer" data-bind="visible:cname">
+        <form id="form" data-bind="visible: cname">
+            <table border="1" id="customer" data-bind="visible: cname">
                 <thead>
                     <tr>
                         <th>Müşteri ID</th>
@@ -76,13 +77,13 @@
                     </tr>
                 </thead>
                 <tbody data-bind="foreach: cList ">
-                    <tr data-bind="click: function(data, evt){ $parent.select(data, evt);}">
-                        <td data-bind="text:customerid"></td>
-                        <td data-bind="text:customerinfo1"></td>
-                        <td data-bind="text:sitename"></td>
-                        <td data-bind="text:blockname"></td>
-                        <td data-bind="text:flat"></td>
-                        <td data-bind="text:gsm"></td>
+                    <tr data-bind="click: function (data, evt) { $parent.select(data, evt); }">
+                        <td data-bind="text: customerid"></td>
+                        <td data-bind="text: customerinfo1"></td>
+                        <td data-bind="text: sitename"></td>
+                        <td data-bind="text: blockname"></td>
+                        <td data-bind="text: flat"></td>
+                        <td data-bind="text: gsm"></td>
 
 
 

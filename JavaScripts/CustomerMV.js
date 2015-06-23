@@ -21,6 +21,9 @@ var customerTransfer = function () {
     this.control = ko.observable();
     self.cname = ko.observable();
     this.resultmessage = ko.observable();
+    this.resultmessage.subscribe(function () {
+        setTimeout(function () { self.resultmessage(null); }, 1000);
+    });
     this.cList = ko.observableArray([]);
     this.sList = ko.observableArray([]);
     this.bList = ko.observableArray([]);
@@ -34,15 +37,15 @@ var customerTransfer = function () {
     });
 }
 
-customerTransfer.prototype.select = function(d, e){
+customerTransfer.prototype.select = function (d, e) {
     $("#customer tr").removeClass("selected");
     $(e.currentTarget).addClass("selected");
-   this.customerid = d.customerid;
+    this.customerid = d.customerid;
 }
 
-customerTransfer.prototype.getCustomer = function (d,e) {
+customerTransfer.prototype.getCustomer = function (d, e) {
     var self = this;
-    if (e&&(e.which==1||e.which==13)) {
+    if (e && (e.which == 1 || e.which == 13)) {
         CustomerTransferApi.findCustomer(self.cname(), function (a, b, c) { self.cList(a); }, null);
     }
     return true;
@@ -56,33 +59,34 @@ customerTransfer.prototype.getSite = function () {
 customerTransfer.prototype.toJSON = function () {
 
     var self = this;
-    var obj= {
+    var obj = {
         customerid: self.customerid,
         blockid: self.selectedBlockValue(),
-        flat:self.selectedFlatValue(),
+        flat: self.selectedFlatValue(),
     };
-    if (obj.customerid==null||obj.blockid==null||obj.flat==null) {
+    if (obj.customerid == null || obj.blockid == null || obj.flat == null) {
         alert("Eksik veya yanlış bilgi girdiniz.");
         return null;
     }
     else {
-    saveTransfer.savetransfer(obj.customerid,obj.blockid,obj.flat, function (a, b, c) { self.sList(a); }, null);
-    console.log(obj);
-    var url = "http://crmapitest.kociletisim.com.tr:8083";
-    $(location).attr('href', url);
-    return obj;
-        }
+        saveTransfer.savetransfer(obj.customerid, obj.blockid, obj.flat, function (a, b, c) { self.sList(a); }, null);
+        console.log(obj);
+        return obj;
+    }
 
 };
 
 customerTransfer.prototype.pasiveCustomer = function () {
     var self = this;
-    if (self.customerid==null) {
+    if (self.customerid == null) {
         alert("Eksik veya yanlış bilgi girdiniz.Müşteriyi Seçiniz");
         return null;
     }
-    pasiveCustomer.pasiveCustomer(self.customerid, function (a, b, c) { self.resultmessage(a); }, null);
-    return self.resultmessage();
+    pasiveCustomer.pasiveCustomer(self.customerid, function (a, b, c) {
+        self.resultmessage(a);
+        self.cList([]);
+    }, null);
+
 };
 
 

@@ -1,7 +1,7 @@
 ﻿if (!window.CustomerTransferApi) {
 
-  baseURI = "http://localhost:50752/api"
-  // baseURI = "http://crmapitest.kociletisim.com.tr:8083/api"
+    //baseURI = "http://localhost:50752/api"
+    baseURI = "http://crmapitest.kociletisim.com.tr:8083/api"
     window.CustomerTransferApi = (function () {
 
         return {
@@ -110,11 +110,11 @@
 
 
     })();
-    
+
 
     window.saveTransfer = (function () {
         return {
-            savetransfer: function (customerid,blockid,flat, onsuccess, onerror) {
+            savetransfer: function (customerid, blockid, flat, onsuccess, onerror) {
                 $.ajax({
                     url: baseURI + "/Nakil/saveTransfer",
                     method: "POST",
@@ -143,10 +143,10 @@
         return {
             pasiveCustomer: function (custid, onsuccess, onerror) {
                 $.ajax({
-                    url: baseURI + "/Nakil/pasiveCustomer?custid="+custid,
+                    url: baseURI + "/Nakil/pasiveCustomer?custid=" + custid,
                     method: "GET",
                     contentType: "application/json",
-                    
+
                 })
                     .fail(function () {
                         if (onerror) onerror();
