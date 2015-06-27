@@ -11,23 +11,32 @@
         
     </head>
     <body>
+        <style>
+            #customer {cursor: pointer;color:#000; }
+             #customer tr:hover {  background: #e16161;  }
+            .selected { background: #ff6a00;   }
+        </style>
+        
         <header>
             <div class="row header-row-color">
                 <div class="container">
                     <div class="col-md-3 mobile-col-md-3">
-                        <select class="form-control">
-                            <option>deneme1</option>
-                            <option>deneme2</option>
-                            <option>deneme3</option>
-                            <option>deneme4</option>
+                        <select class="form-control" data-bind="options: sList,
+                                                                optionsText: 'sitename',
+                                                                optionsValue: 'siteid',
+                                                                value: selectedSiteValue,
+                                                                optionsCaption: 'Siteyi Seçiniz...'">
+                            
                         </select>
                     </div>
                     <div class="col-md-3 mobile-col-md-3">
-                        <select class="form-control">
-                            <option>deneme1</option>
-                            <option>deneme2</option>
-                            <option>deneme3</option>
-                            <option>deneme4</option>
+                        <select class="form-control" data-bind="options: bList,
+                                                    optionsText: 'blockname',
+                                                    visible: selectedSiteValue,
+                                                    optionsValue: 'blockid',
+                                                    value: selectedBlockValue,
+                                                    optionsCaption: 'Bloğu Seçiniz...'">
+                           
                         </select>
                     </div>
                     <div class="col-md-3 mobile-col-md-3">
@@ -43,33 +52,40 @@
         <section>
             <div class="row section-row-color">
                 <div class="container">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tr>
-                                <td class="success text-center">#</td>
-                                <td class="active">Müşteri ID</td>
-                                <td class="success">Müşteri Adı</td>
-                                <td class="warning">Müşteri Soyadı</td>
-                                <td class="danger">Daire</td>
-                                <td class="info">GSM</td>
-                                <td class="success">Field</td>
-                            </tr>
-                            <tr>
-                                <td class="text-center field-in">1</td>
-                                <td class="field-in"></td>
-                                <td class="field-in">Field2</td>
-                                <td class="field-in">Field3</td>
-                                <td class="field-in">Field4</td>
-                                <td class="field-in">Field5</td>
-                                <td class="field-in">Field6</td>
-                            </tr>
+                    <div>
+                        <table class="table" id="customer" data-pagination="true" data-search="true">
+                      <thead>
+                        <tr>
+                            <th class="success"></th>
+                            <th class="success" >Müşteri ID</th>
+                            <th class="success" >Müşteri Adı</th>
+                            <th class="success">Müşteri Soyadı</th>
+                            <th class="success">Site</th>
+                            <th class="success">Blok</th>
+                            <th class="success">Daire</th>
+                            <th class="success">GSM</th>
+                         
+                        </tr>
+                    </thead>
+                         <tbody data-bind="foreach: cList ">
+                         <tr data-bind="click: function (data, evt) { $parent.select(data, evt); }">
+                            <td><button>Düzenle</button></td>
+                            <td data-bind="text: customerid"></td>
+                            <td data-bind="text: customername"></td>
+                            <td data-bind="text: customersurname"></td>
+                            <td data-bind="text: block.site.sitename"></td>
+                            <td data-bind="text: block.blockname"></td>
+                            <td data-bind="text: flat"></td>
+                            <td data-bind="text: gsm"></td>
+                        </tr>
+                          </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </section>
         <footer>
-
+          
         </footer>
 
         <!--site hızlı açılması için en altta çağırıyoruz-->

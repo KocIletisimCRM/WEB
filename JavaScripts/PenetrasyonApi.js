@@ -1,7 +1,7 @@
 ﻿if (!window.PenetrasyonApi) {
 
-    baseURI = "http://localhost:50752/api"
-   // baseURI = "http://crmapitest.kociletisim.com.tr:8083/api"
+   // baseURI = "http://localhost:50752/api"
+    baseURI = "http://crmapitest.kociletisim.com.tr:8083/api"
 
     window.Customer = (function () {
 
@@ -10,9 +10,10 @@
             getCustomer: function (siteid,blockid,customername,onsuccess, onerror) {
 
                 $.ajax({
-                    url: baseURI + "/Penetrasyon/getCustomer?siteid="+siteid+"&blockid="+blockid+"&customername="+customername+"",
-                    method: "GET",
+                    url: baseURI + "/Penetrasyon/getCustomer",
+                    method: "POST",
                     contentType: "application/json",
+                    data: JSON.stringify({siteid:siteid,blockid:blockid,name:customername })
 
 
                 })
