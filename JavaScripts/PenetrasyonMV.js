@@ -40,10 +40,11 @@ var penetrasyon = function () {
     });
     this.pageNo.extend({ notify: 'always' });
     this.rowsPerPage = ko.observable(20);
+    this.pageCount = ko.computed(function(){
+        return (self.cList().length / self.rowsPerPage()) + 1;
+    });
     this.datasource = ko.observable([]);
 }
-
-
 
 penetrasyon.prototype.select = function (d, e) {
     $("#customer tr").removeClass("selected");
@@ -51,6 +52,26 @@ penetrasyon.prototype.select = function (d, e) {
     this.customerid = d.customerid;
 };
 
+penetrasyon.prototype.go = function () {
+    var self = this;
+    return {
+        first: function () {
+            self.pageNo(1);
+        },
+        previous: function () {
+            self.pageNo(Math.max(self.pageNo() - 1, 1));
+        },
+        page: function (pageNo) {
+            self.pageNo(Math.max(1, Math.min(pageNo, self.pageCount())));
+        },
+        next: function () {
+            self.pageNo(Math.min(self.pageCount(), self.pageNo() + 1));
+        },
+        last: function () {
+            self.pageNo(self.pageCount());
+        }
+    }
+}
 
 penetrasyon.prototype.getCustomer = function (){
     var self = this;
