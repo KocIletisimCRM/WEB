@@ -4,7 +4,7 @@
 
 $(window).load(function () {
 
-    var p = new penetrasyon();
+    p = new penetrasyon();
     ko.applyBindings(p);
     p.getCustomer();
     p.getSite();
@@ -17,6 +17,9 @@ var penetrasyon = function () {
     this.selectedSiteValue = ko.observable();
     this.selectedBlockValue = ko.observable();
     this.cList = ko.observableArray([]);
+    this.cList.subscribe(function () {
+        self.pageNo(1);
+    });
     this.sList = ko.observableArray([]);
     this.bList = ko.observableArray([]);
     this.selectedSiteValue.subscribe(function (v) {
@@ -26,6 +29,14 @@ var penetrasyon = function () {
     this.selectedBlockValue.subscribe(function (v) {
         Customer.getCustomer(null, v, null, function (a, b, c) { self.cList(a); }, null);
     });
+    this.pageNo = ko.observable(1);
+    this.pageNo.subscribe(function () {
+        self.datasource(self.cList().slice((self.pageNo() - 1) * self.rowsPerPage(), self.pageNo() * self.rowsPerPage() - 1));
+    });
+    this.pageNo.extend({ notify: 'always' });
+    this.rowsPerPage = ko.observable(20);
+    this.datasource = ko.observable([]);
+
 }
 
 

@@ -53,21 +53,22 @@
             <div class="row section-row-color">
                 <div class="container">
                     <div>
-                        <table class="table" id="customer" data-pagination="true" data-search="true">
+                        <table class="table" id="customer" data-pagination="true" data-search="true" border:>
                       <thead>
                         <tr>
                             <th class="success"></th>
-                            <th class="success" >Müşteri ID</th>
-                            <th class="success" >Müşteri Adı</th>
-                            <th class="success">Müşteri Soyadı</th>
+                            <th class="success" > ID</th>
+                            <th class="success" > Adı</th>
+                            <th class="success"> Soyadı</th>
                             <th class="success">Site</th>
                             <th class="success">Blok</th>
                             <th class="success">Daire</th>
                             <th class="success">GSM</th>
+                            <th class="success">Açıklama</th>
                          
                         </tr>
                     </thead>
-                         <tbody data-bind="foreach: cList ">
+                         <tbody data-bind="foreach: datasource ">
                          <tr data-bind="click: function (data, evt) { $parent.select(data, evt); }">
                             <td><button>Düzenle</button></td>
                             <td data-bind="text: customerid"></td>
@@ -77,6 +78,7 @@
                             <td data-bind="text: block.blockname"></td>
                             <td data-bind="text: flat"></td>
                             <td data-bind="text: gsm"></td>
+                            <td data-bind="text: description"></td>
                         </tr>
                           </tbody>
                         </table>
