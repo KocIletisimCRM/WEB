@@ -82,6 +82,7 @@ customerTransfer.prototype.toJSON = function () {
 
 };
 
+
 customerTransfer.prototype.pasiveCustomer = function () {
     var self = this;
     if (self.customerid == null) {

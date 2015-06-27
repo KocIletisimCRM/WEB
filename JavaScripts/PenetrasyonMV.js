@@ -22,9 +22,13 @@ var penetrasyon = function () {
     });
     this.sList = ko.observableArray([]);
     this.bList = ko.observableArray([]);
+    this.closedtasks = ko.observable();
+    this.closedtasks.subscribe(function () {
+        self.getCustomer();
+    });
     this.selectedSiteValue.subscribe(function (v) {
         Block.getBlock(v, function (a, b, c) { self.bList(a); }, null);
-        Customer.getCustomer(v, null, null, function (a, b, c) { self.cList(a); }, null);
+        self.getCustomer();
     });
     this.selectedBlockValue.subscribe(function (v) {
         Customer.getCustomer(null, v, null, function (a, b, c) { self.cList(a); }, null);
@@ -36,7 +40,6 @@ var penetrasyon = function () {
     this.pageNo.extend({ notify: 'always' });
     this.rowsPerPage = ko.observable(20);
     this.datasource = ko.observable([]);
-
 }
 
 
@@ -45,13 +48,17 @@ penetrasyon.prototype.select = function (d, e) {
     $("#customer tr").removeClass("selected");
     $(e.currentTarget).addClass("selected");
     this.customerid = d.customerid;
-}
+};
 
-penetrasyon.prototype.getCustomer = function (d, e){
+
+penetrasyon.prototype.getCustomer = function (){
     var self = this;
     //if (e && (e.which == 1 || e.which == 13)) { }
-        Customer.getCustomer(null,null,null,function (a, b, c) { self.cList(a); }, null);
-    
+    self.cList([]);
+    Customer.getCustomer(self.selectedSiteValue(), self.selectedBlockValue(), null, self.closedtasks(),
+        function (a, b, c) {
+            self.cList(a);
+        }, null);
 };
 
 penetrasyon.prototype.getSite = function (d, e) {
