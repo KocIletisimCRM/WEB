@@ -1,0 +1,14 @@
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+  
+}
+.row-color{
+    background-color: rgb(135,206,250);
+    padding: 25px 0px 25px 0px;
+}
+@media screen and (max-width: 991px) {
+    .mobile-col-md-1, .mobile-col-md-2,.mobile-col-md-3{
+        padding: 2px 0px 2px 0px;
+    }
+}
