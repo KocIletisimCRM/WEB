@@ -35,7 +35,8 @@ var penetrasyon = function () {
     });
     this.pageNo = ko.observable(1);
     this.pageNo.subscribe(function () {
-        self.datasource(self.cList().slice((self.pageNo() - 1) * self.rowsPerPage(), self.pageNo() * self.rowsPerPage() - 1));
+        if (self.pageNo() == 0) self.datasource([]);
+        else self.datasource(self.cList().slice((self.pageNo() - 1) * self.rowsPerPage(), self.pageNo() * self.rowsPerPage() - 1));
     });
     this.pageNo.extend({ notify: 'always' });
     this.rowsPerPage = ko.observable(20);
@@ -54,7 +55,7 @@ penetrasyon.prototype.select = function (d, e) {
 penetrasyon.prototype.getCustomer = function (){
     var self = this;
     //if (e && (e.which == 1 || e.which == 13)) { }
-    self.cList([]);
+    self.pageNo(0);
     Customer.getCustomer(self.selectedSiteValue(), self.selectedBlockValue(), null, self.closedtasks(),
         function (a, b, c) {
             self.cList(a);
