@@ -22,3 +22,9 @@
 .table-responsive .table tr:hover{
     background-color: orange;
 }
+.modal_popup{
+    background-color: rgb(70,130,180);
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 3px 4px;
+}
