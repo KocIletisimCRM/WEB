@@ -69,7 +69,13 @@ customerTransfer.prototype.toJSON = function () {
         return null;
     }
     else {
-        saveTransfer.savetransfer(obj.customerid, obj.blockid, obj.flat, function (a, b, c) { self.sList(a); }, null);
+        saveTransfer.savetransfer(obj.customerid, obj.blockid, obj.flat, function (a, b, c) {
+            self.resultmessage(a);
+            //sList(a);
+            self.cList([]);
+            self.bList[[]];
+            self.flatList([]);
+        }, null);
         console.log(obj);
         return obj;
     }
@@ -82,6 +88,7 @@ customerTransfer.prototype.pasiveCustomer = function () {
         alert("Eksik veya yanlış bilgi girdiniz.Müşteriyi Seçiniz");
         return null;
     }
+    
     pasiveCustomer.pasiveCustomer(self.customerid, function (a, b, c) {
         self.resultmessage(a);
         self.cList([]);

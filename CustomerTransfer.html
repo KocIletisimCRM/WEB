@@ -22,7 +22,7 @@
         <div id="formpaneli">
             
                 <h3 color:#ffffff> Müşteri Taşıma İşlemleri</h3>
-                <div style="background:#808080" data-bind="visible: resultmessage != null, text: resultmessage"></div>
+                <div style="background:#dc5c33"  data-bind="visible: resultmessage != null, text: resultmessage"></div>
                 <input type="text" id="input" placeholder="Müşteri Adı Giriniz..." data-bind="value: cname, valueUpdate: 'keydown', event: { keypress: getCustomer }" />
                 <button id="Button1" data-bind="click: getCustomer"> Müşteri Ara</button>
 
@@ -55,10 +55,7 @@
     value: selectedFlatValue,
     optionsCaption: 'Daire Seçiniz...',"></select>
 
-
-
-
-            <input id="input " type="submit" data-bind="click: toJSON, visible: selectedBlockValue" value="Gönder">
+  <input id="input " type="submit" data-bind="click: toJSON, visible: selectedBlockValue" value="Gönder">
 
 
 
