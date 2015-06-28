@@ -1,7 +1,7 @@
 ﻿if (!window.PenetrasyonApi) {
 
-  // baseURI = "http://localhost:50752/api"
-    baseURI = "http://crmapitest.kociletisim.com.tr:8083/api"
+   baseURI = "http://localhost:50752/api"
+   // baseURI = "http://crmapitest.kociletisim.com.tr:8083/api"
 
    window.Customer = (function () {
 
@@ -84,5 +84,33 @@
 
   )();
 
+    window.getCustomerCard = (function () {
+
+
+        return {
+            CustomerCard: function (custid, onsuccess, onerror) {
+
+                $.ajax({
+                    url: baseURI + "/Penetrasyon/getCustomerCard",
+                    method: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({ custid:custid }),
+
+                })
+                    .fail(function () {
+                        if (onerror) onerror();
+                    })
+                    .success(function (a, b, c) {
+                        if (onsuccess) onsuccess(a, b, c);
+                    })
+                    .complete(function () {
+                    })
+
+            }
+
+        };
+    }
+
+  )();
 
 }

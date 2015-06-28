@@ -104,7 +104,7 @@
                             <!-- /ko -->
                             <!-- ko foreach: datasource -->
                             <tr data-bind="click: function (data, evt) { $parent.select(data, evt); }">
-                                <td><button type="button" class="modal_popup" data-toggle="modal" data-target="#myModal">Düzenle</button></td>
+                                <td><button type="button" class="modal_popup" data-toggle="modal" data-target="#myModal" data-bind="click: getCustomerCard">Düzenle</button></td>
                                 <td data-bind="text: customerid"></td>
                                 <td data-bind="text: customername"></td>
                                 <td data-bind="text: customersurname"></td>
