@@ -68,6 +68,19 @@
                 <div>
                     <label>
                         <input type="checkbox" data-bind="checked: closedtasks">Kapalı Tasklar Getirilsin</label>
+                      <nav class="text-center">
+                    <ul class="pagination">
+                        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+                        <li><a href="#">Previous</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">Sonraki</a></li>
+                        <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+                    </ul>
+                </nav>
                     <table class="table" id="customer" data-pagination="true" data-search="true">
                         <thead>
                             <tr>
@@ -121,7 +134,7 @@
     </section>
     <footer></footer>
 
-    <!-- Modal -->
+    <!-- Modal Popup -->
     <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -130,10 +143,98 @@
                     <h4 class="modal-title" id="myModalLabel">Penetrasyon Düzenleme Formu</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="col-lg-6">
-                        <div class="modal-popup-area1_1"></div>
+                    <!-- Müşteri No -->
+                    <div class="col-md-6 modal-col-md-12-height">Müşteri No</div>
+                    <div class="col-md-6 modal-col-md-12-height">
+                        <div class="modal-col-md-12-height-div">deger</div>
                     </div>
-                    <div class="col-lg-6">1234</div>
+                    <!-- Blok -->
+                    <div class="col-md-6 modal-col-md-12-height">Blok</div>
+                    <div class="col-md-6 modal-col-md-12-height">
+                        <div class="modal-col-md-12-height-div">deger</div>
+                    </div>
+                    <!-- Daire -->
+                    <div class="col-md-6 modal-col-md-12-height">Daire</div>
+                    <div class="col-md-6 modal-col-md-12-height">
+                        <div class="modal-col-md-12-height-div">deger</div>
+                    </div>
+                    <!-- Müşteri Statüsü -->
+                    <div class="col-md-6 modal-col-md-12-height">Müşteri Statüsü</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <select class="form-control input-sm"><option></option></select>
+                    </div>
+                    <!-- İnternet SS -->
+                    <div class="col-md-6 modal-col-md-12-height">İnternet SS</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <select class="form-control input-sm"><option></option></select>
+                    </div>
+                    <!-- İnternet Ücreti -->
+                    <div class="col-md-6 modal-col-md-12-height">İnternet Ücreti</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <select class="form-control input-sm"><option></option></select>
+                    </div>
+                    <!-- Televizyon Kullanımı -->
+                    <div class="col-md-6 modal-col-md-12-height">Televizyon Kullanımı</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <select class="form-control input-sm"><option></option></select>
+                    </div>
+                    <!-- Turkcell Tv Kullanımı -->
+                    <div class="col-md-6 modal-col-md-12-height">Turkcell Tv Kullanımı</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <select class="form-control input-sm"><option></option></select>
+                    </div>
+                    <!-- GSM Kullanımı -->
+                    <div class="col-md-6 modal-col-md-12-height">GSM Kullanımı</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <select class="form-control input-sm"><option></option></select>
+                    </div>
+                    <!-- Emptor Müşteri Numarası -->
+                    <div class="col-md-6 modal-col-md-12-height">Emptor Müşteri Numarası</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <input class="form-control input-sm" type="text" placeholder="">
+                    </div>
+                    <!-- TC Kimlik No -->
+                    <div class="col-md-6 modal-col-md-12-height">TC Kimlik No</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <input class="form-control input-sm" type="text" placeholder="">
+                    </div>
+                    <!-- Adı -->
+                    <div class="col-md-6 modal-col-md-12-height">Adı</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <input class="form-control input-sm" type="text" placeholder="">
+                    </div>
+                    <!-- Soyadı -->
+                    <div class="col-md-6 modal-col-md-12-height">Soyadı</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <input class="form-control input-sm" type="text" placeholder="">
+                    </div>
+                    <!-- GSM -->
+                    <div class="col-md-6 modal-col-md-12-height">GSM</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <input class="form-control input-sm" type="text" placeholder="">
+                    </div>
+                    <!-- Telefon -->
+                    <div class="col-md-6 modal-col-md-12-height">Telefon</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <input class="form-control input-sm" type="text" placeholder="">
+                    </div>
+                    <!-- Doğum Tarihi -->
+                    <div class="col-md-6 modal-col-md-12-height">Doğum Tarihi</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <input class="form-control input-sm" type="date" placeholder="">
+                    </div>
+                    <!-- Açıklama -->
+                    <div class="col-md-6 modal-col-md-12-height">Açıklama</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <input class="form-control input-sm" type="text" placeholder="">
+                    </div>
+                    <!-- Kat Ziyareti Taskı Kapatılsın mı? -->
+                    <div class="col-md-6 modal-col-md-12-height">Kat Ziyareti Taskı Kapatılsın mı?</div>
+                    <div class="col-md-6 modal-col-md-12-height-select">
+                        <input class="form-control checkbox-sm" type="checkbox">
+                    </div>
+                    
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
