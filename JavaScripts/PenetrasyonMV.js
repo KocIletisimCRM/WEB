@@ -8,14 +8,26 @@ $(window).load(function () {
     ko.applyBindings(p);
     p.getCustomer();
     p.getSite();
+    p.CustomerStatus();
+    p.getISSStatus();
+    p.netStatus();
+    p.getTvStatus();
+    p.getTurkcellTvStatus();
+    p.getGsmStatus();
 });
 
 
 var penetrasyon = function () {
     var self = this;
     this.customerid = ko.observable();
+    this.customername = ko.observable();
     this.selectedSiteValue = ko.observable();
     this.selectedBlockValue = ko.observable();
+    this.selectedCustomerStatusValue = ko.observable();
+    this.selectedNetStatusValue = ko.observable();
+    this.selectedTvStatusValue = ko.observable();
+    this.selectedTurkcellTvStatusValue = ko.observable();
+    this.selectedGsmStatusValue = ko.observable();
     this.cList = ko.observableArray([]);
     this.cList.subscribe(function () {
         self.pageNo(1);
@@ -23,7 +35,13 @@ var penetrasyon = function () {
     this.sList = ko.observableArray([]);
     this.bList = ko.observableArray([]);
     this.closedtasks = ko.observable();
-    this.customerCardList=ko.observableArray([]);
+    this.customerCardList = ko.observableArray([]);
+    this.statusList = ko.observableArray([]);
+    this.ISSList = ko.observableArray([]);
+    this.NetStatusList = ko.observableArray([]);
+    this.tvStatusList = ko.observableArray([]);
+    this.TurkcelTvStatusList = ko.observableArray([]);
+    this.GsmStatusList = ko.observableArray([]);
     this.closedtasks.subscribe(function () {
         self.getCustomer();
     });
@@ -32,7 +50,7 @@ var penetrasyon = function () {
         self.getCustomer();
     });
     this.selectedBlockValue.subscribe(function (v) {
-        Customer.getCustomer(null, v, null, function (a, b, c) { self.cList(a); }, null);
+        p.getCustomer(null, v, null, function (a, b, c) { self.cList(a); }, null);
     });
     this.pageNo = ko.observable(1);
     this.pageNo.subscribe(function () {
@@ -45,6 +63,7 @@ var penetrasyon = function () {
         return (self.cList().length / self.rowsPerPage()) + 1;
     });
     this.datasource = ko.observable([]);
+    this.selectedCustomer = ko.observable();
 }
 
 penetrasyon.prototype.select = function (d, e) {
@@ -52,7 +71,13 @@ penetrasyon.prototype.select = function (d, e) {
     $(e.currentTarget).addClass("selected");
     this.customerid = d.customerid;
 };
-
+penetrasyon.prototype.findCustomer = function (d,e) {
+    var self = this;
+    if (e && (e.which == 1 || e.which == 13)) {
+        Customer.getCustomer(null, null, self.customername(), self.closedtasks(), function (a, b, c) { self.cList(a); }, null);
+    }
+    return true;
+};
 penetrasyon.prototype.go = function () {
     var self = this;
     return {
@@ -73,7 +98,6 @@ penetrasyon.prototype.go = function () {
         }
     }
 }
-
 penetrasyon.prototype.getCustomer = function (){
     var self = this;
     //if (e && (e.which == 1 || e.which == 13)) { }
@@ -83,15 +107,55 @@ penetrasyon.prototype.getCustomer = function (){
             self.cList(a);
         }, null);
 };
-
 penetrasyon.prototype.getSite = function () {
     var self = this;
     Site.getSite(function (a, b, c) { self.sList(a); }, null);
 };
-
-penetrasyon.prototype.getCustomerCard = function () {
+penetrasyon.prototype.CustomerStatus = function () {
     var self = this;
-    getCustomerCard.CustomerCard(self.customerid(),function (a, b, c) {self.customerCardList(a) });
+    getCustomerStatus.getStatus(function (a, b, c) { self.statusList(a); }, null);
+};
+penetrasyon.prototype.getISSStatus = function () {
+    var self = this;
+    getISSstatus.getStatus(function (a, b, c) { self.ISSList(a); }, null);
+};
+penetrasyon.prototype.netStatus = function () {
+    var self = this;
+    getNetStatus.getStatus(function (a, b, c) { self.NetStatusList(a); }, null);
+};
+penetrasyon.prototype.getTvStatus = function () {
+    var self = this;
+    getTvStatus.getStatus(function (a, b, c) { self.tvStatusList(a); }, null);
+};
+penetrasyon.prototype.getTurkcellTvStatus = function () {
+    var self = this;
+    getTurkcellTvStatus.getStatus(function (a, b, c) { self.TurkcelTvStatusList(a); }, null);
+};
+penetrasyon.prototype.getGsmStatus = function () {
+    var self = this;
+    getGsmStatus.getStatus(function (a, b, c) { self.GsmStatusList(a); }, null);
+};
+penetrasyon.prototype.getCustomerCard = function (index) {
+    var self = this;
+    console.log(index);
+    var obj = self.cList()[index];
+    obj.closedKatZiyareti = false;
+    self.selectedCustomer(obj);
+    //getCustomerCard.CustomerCard(self.customerid(),function (a, b, c) {self.customerCardList(a) });
+};
+penetrasyon.prototype.saveCustomer = function () {
+    var self = this;
+    saveCustomer.saveCt(function (a, b, c) { }, null);
+    p.getCustomer();
+
+};
+penetrasyon.prototype.getPageNumbers = function () {
+    var self = this;
+    var pn = [];
+    for (var i = 0; i < self.pageCount(); i++) {
+        pn.push(i + 1);
+    }
+    return pn;
 };
 
 

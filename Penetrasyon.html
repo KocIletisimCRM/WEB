@@ -9,13 +9,6 @@
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/style.css" rel="stylesheet"/>
-
-   
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#myModal").modal('show');
-        });
-    </script>
 </head>
 <body>
     <style>
@@ -53,10 +46,10 @@
                     </select>
                 </div>
                 <div class="col-md-3 mobile-col-md-3">
-                    <input class="form-control" type="text" placeholder="Default input">
+                    <input class="form-control" type="text" placeholder="Söyleyin Bulalım..." data-bind="value: customername, valueUpdate: 'keydown', event: { keypress: findCustomer }">
                 </div>
                 <div class="col-md-1 mobile-col-md-1">
-                    <input class="btn btn-default" type="button" value="ARA">
+                    <input class="btn btn-default" type="button" value="ARA" data-bind="click:findCustomer"  >
                 </div>
             </div>
         </div>
@@ -67,44 +60,42 @@
             <div class="container">
                 <div>
                     <label>
-                        <input type="checkbox" data-bind="checked: closedtasks">Kapalı Tasklar Getirilsin</label>
-                      <nav class="text-center">
+                        <input type="checkbox" data-bind="checked: closedtasks ">Kapalı Tasklar Getirilsin</label>
+                     <nav class="text-center">
                     <ul class="pagination">
-                        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
-                        <li><a href="#">Previous</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">Sonraki</a></li>
-                        <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+                        <li class="previous"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().first(); }">&lt;&lt;</a></li>
+                        <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().previous(); }">&lt;</a></li>
+                        <li><select class="form-control" data-bind="options: p.getPageNumbers(),
+                                                                    value: pageNo
+                                                                    ">Sayfa</select></li>
+                        <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().next(); }">&gt;</a></li>
+                        <li class="next"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().last(); }">&gt;&gt;</a></li>
                     </ul>
                 </nav>
                     <table class="table" id="customer" data-pagination="true" data-search="true">
                         <thead>
                             <tr>
                                 <th class="success"></th>
-                                <th class="success">ID</th>
-                                <th class="success">Adı</th>
-                                <th class="success">Soyadı</th>
-                                <th class="success">Site</th>
+                                <th class="warning">ID</th>
+                                <th class="info">Adı</th>
+                                <th class="info">Soyadı</th>
+                                <th class="danger">Site</th>
                                 <th class="success">Blok</th>
                                 <th class="success">Daire</th>
-                                <th class="success">GSM</th>
-                                <th class="success">Açıklama</th>
+                                <th class="info">GSM</th>
+                                <th class="danger">Açıklama</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <!-- ko if:(pageNo()==0) -->
                             <tr>
-                                <td colspan="9" style="background: url('/Content/images/progress_bar.gif') center center no-repeat;"></td>
+                                <td colspan="9" style="background: url('/Content/images/progressbar.gif') center center no-repeat;"></td>
                             </tr>
                             <!-- /ko -->
                             <!-- ko foreach: datasource -->
                             <tr data-bind="click: function (data, evt) { $parent.select(data, evt); }">
-                                <td><button type="button" class="modal_popup" data-toggle="modal" data-target="#myModal" data-bind="click: getCustomerCard">Düzenle</button></td>
+                                <td><button type="button" class="modal_popup" data-toggle="modal" data-target="#myModal" data-bind="click: function (data, evt) { $parent.getCustomerCard($index()); }">Düzenle</button></td>
                                 <td data-bind="text: customerid"></td>
                                 <td data-bind="text: customername"></td>
                                 <td data-bind="text: customersurname"></td>
@@ -135,110 +126,132 @@
     <footer></footer>
 
     <!-- Modal Popup -->
-    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  >
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Penetrasyon Düzenleme Formu</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" data-bind="with: selectedCustomer" >
                     <!-- Müşteri No -->
                     <div class="col-md-6 modal-col-md-12-height">Müşteri No</div>
                     <div class="col-md-6 modal-col-md-12-height">
-                        <div class="modal-col-md-12-height-div">deger</div>
+                        <div class="modal-col-md-12-height-div" data-bind="text:customerid"></div>
                     </div>
                     <!-- Blok -->
                     <div class="col-md-6 modal-col-md-12-height">Blok</div>
                     <div class="col-md-6 modal-col-md-12-height">
-                        <div class="modal-col-md-12-height-div">deger</div>
+                        <div class="modal-col-md-12-height-div" data-bind="text:block.blockid"></div>
                     </div>
                     <!-- Daire -->
                     <div class="col-md-6 modal-col-md-12-height">Daire</div>
                     <div class="col-md-6 modal-col-md-12-height">
-                        <div class="modal-col-md-12-height-div">deger</div>
+                        <div class="modal-col-md-12-height-div"data-bind="text: flat"></div>
                     </div>
                     <!-- Müşteri Statüsü -->
                     <div class="col-md-6 modal-col-md-12-height">Müşteri Statüsü</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <select class="form-control input-sm"><option></option></select>
+                        <select class="form-control input-sm" data-bind="options: $parent.statusList,
+                                                                            optionsText: 'Text',
+                                                                            optionsValue: 'ID',
+                                                                            value: customer_status,
+                                                                            optionsCaption: 'Müşteri Statüsü Seçiniz...'"></select>
                     </div>
                     <!-- İnternet SS -->
                     <div class="col-md-6 modal-col-md-12-height">İnternet SS</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <select class="form-control input-sm"><option></option></select>
+                        <select class="form-control input-sm" data-bind="options: $parent.ISSList,
+                                                                            optionsText: 'issText',
+                                                                            optionsValue: 'id',
+                                                                            value:iss,
+                                                                            optionsCaption: 'ISS Seçiniz...'" ></select>
                     </div>
                     <!-- İnternet Ücreti -->
                     <div class="col-md-6 modal-col-md-12-height">İnternet Ücreti</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <select class="form-control input-sm"><option></option></select>
+                        <select class="form-control input-sm" data-bind="options: $parent.NetStatusList,
+                                                                    optionsText: 'netText',
+                                                                    optionsValue: 'id',
+                                                                    value: netstatu,
+                                                                    optionsCaption: 'Net Ücreti Seçiniz...'" ></select>
                     </div>
                     <!-- Televizyon Kullanımı -->
                     <div class="col-md-6 modal-col-md-12-height">Televizyon Kullanımı</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <select class="form-control input-sm"><option></option></select>
+                        <select class="form-control input-sm" data-bind="options: $parent.tvStatusList,
+                                                                        optionsText: 'tvKullanımıText',
+                                                                        optionsValue: 'id',
+                                                                        value: tvstatu,
+                                                                        optionsCaption: 'Tv Kullanımı Seçiniz...'"></select>
                     </div>
                     <!-- Turkcell Tv Kullanımı -->
                     <div class="col-md-6 modal-col-md-12-height">Turkcell Tv Kullanımı</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <select class="form-control input-sm"><option></option></select>
+                        <select class="form-control input-sm" data-bind="options: $parent.TurkcelTvStatusList,
+                                                                         optionsText: 'TurkcellTvText',
+                                                                            optionsValue: 'id',
+                                                                            value: turkcellTv,
+                                                                            optionsCaption: 'TTV + Kullanımı Seçiniz...'"></select>
                     </div>
                     <!-- GSM Kullanımı -->
                     <div class="col-md-6 modal-col-md-12-height">GSM Kullanımı</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <select class="form-control input-sm"><option></option></select>
+                        <select class="form-control input-sm" data-bind="options: $parent.GsmStatusList,
+                                                                        optionsText: 'gsmText',
+                                                                        optionsValue: 'id',
+                                                                        value: gsmstatu,
+                                                                        optionsCaption: 'Gsm Kullanımı Seçiniz...'"></select>
                     </div>
                     <!-- Emptor Müşteri Numarası -->
                     <div class="col-md-6 modal-col-md-12-height">Emptor Müşteri Numarası</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <input class="form-control input-sm" type="text" placeholder="">
+                        <input class="form-control input-sm" type="text" placeholder="" data-bind="value:emptorcustomernum" >
                     </div>
                     <!-- TC Kimlik No -->
                     <div class="col-md-6 modal-col-md-12-height">TC Kimlik No</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <input class="form-control input-sm" type="text" placeholder="">
+                        <input class="form-control input-sm" type="text" placeholder="" data-bind="value: tckimlikno">
                     </div>
                     <!-- Adı -->
                     <div class="col-md-6 modal-col-md-12-height">Adı</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <input class="form-control input-sm" type="text" placeholder="">
+                        <input class="form-control input-sm" type="text" placeholder="" data-bind="value: customername">
                     </div>
                     <!-- Soyadı -->
                     <div class="col-md-6 modal-col-md-12-height">Soyadı</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <input class="form-control input-sm" type="text" placeholder="">
+                        <input class="form-control input-sm" type="text" placeholder="" data-bind="value: customersurname">
                     </div>
                     <!-- GSM -->
                     <div class="col-md-6 modal-col-md-12-height">GSM</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <input class="form-control input-sm" type="text" placeholder="">
+                        <input class="form-control input-sm" type="text" placeholder="" data-bind="value: gsm">
                     </div>
                     <!-- Telefon -->
                     <div class="col-md-6 modal-col-md-12-height">Telefon</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <input class="form-control input-sm" type="text" placeholder="">
+                        <input class="form-control input-sm" type="text" placeholder="" data-bind="value: phone">
                     </div>
                     <!-- Doğum Tarihi -->
                     <div class="col-md-6 modal-col-md-12-height">Doğum Tarihi</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <input class="form-control input-sm" type="date" placeholder="">
+                        <input class="form-control input-sm" type="date" placeholder="" data-bind="value: birthdate">
                     </div>
                     <!-- Açıklama -->
                     <div class="col-md-6 modal-col-md-12-height">Açıklama</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <input class="form-control input-sm" type="text" placeholder="">
+                        <input class="form-control input-sm" type="text" placeholder="" data-bind="value: description" >
                     </div>
                     <!-- Kat Ziyareti Taskı Kapatılsın mı? -->
                     <div class="col-md-6 modal-col-md-12-height">Kat Ziyareti Taskı Kapatılsın mı?</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <input class="form-control checkbox-sm" type="checkbox">
+                        <input class="form-control checkbox-sm" type="checkbox" data-bind="checked: closedKatZiyareti">
                     </div>
-                    
-                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
-                    <button type="button" class="btn btn-primary">Kaydet</button>
+                    <button type="button" class="btn btn-primary" data-bind="click: saveCustomer" data-dismiss="modal" >Kaydet</button>
                 </div>
             </div>
         </div>
@@ -249,8 +262,7 @@
     <script src="JavaScripts/bootstrap.js"></script>    
     <script src="JavaScripts/PenetrasyonApi.js"></script>
     <script src="JavaScripts/PenetrasyonMV.js"></script>
-
-   
+      
 </body>
 </html>
   
