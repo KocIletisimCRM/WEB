@@ -13,7 +13,7 @@ $(window).load(function () {
 
 var penetrasyon = function () {
     var self = this;
-    this.customerid = null;
+    this.customerid = ko.observable();
     this.selectedSiteValue = ko.observable();
     this.selectedBlockValue = ko.observable();
     this.cList = ko.observableArray([]);
@@ -23,6 +23,7 @@ var penetrasyon = function () {
     this.sList = ko.observableArray([]);
     this.bList = ko.observableArray([]);
     this.closedtasks = ko.observable();
+    this.customerCardList=ko.observableArray([]);
     this.closedtasks.subscribe(function () {
         self.getCustomer();
     });
@@ -83,11 +84,15 @@ penetrasyon.prototype.getCustomer = function (){
         }, null);
 };
 
-penetrasyon.prototype.getSite = function (d, e) {
+penetrasyon.prototype.getSite = function () {
     var self = this;
     Site.getSite(function (a, b, c) { self.sList(a); }, null);
 };
 
+penetrasyon.prototype.getCustomerCard = function () {
+    var self = this;
+    getCustomerCard.CustomerCard(self.customerid(),function (a, b, c) {self.customerCardList(a) });
+};
 
 
 
