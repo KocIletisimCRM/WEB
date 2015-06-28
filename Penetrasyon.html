@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, inital-scale=1.0" />
     <!--RESPONSİVE-->
     <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="Content/style.css" rel="stylesheet" />
-    <link rel="stylesheet/less" type="text/css" href="Content/style.less" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/style.css" rel="stylesheet"/>
+
+   
     <script type="text/javascript">
         $(document).ready(function () {
             $("#myModal").modal('show');
@@ -21,11 +23,9 @@
             cursor: pointer;
             color: #000;
         }
-
             #customer tr:hover {
                 background: #e16161;
             }
-
         .selected {
             background: #ff6a00;
         }
@@ -120,11 +120,11 @@
                 </div>
                 <nav class="text-center">
                     <ul class="pagination">
-                        <li class="previous"><a href="javascript:void(0)" data-bind="click: function(e){e.go().first();}">&lt;&lt;</a></li>
-                        <li><a href="javascript:void(0)" data-bind="click: function(e){e.go().previous();}">&lt;</a></li>
-                        <li><a href="javascript:void(0)" data-bind="click: function(e){e.go().page(1);}">1</a></li>
-                        <li><a href="javascript:void(0)" data-bind="click: function(e){e.go().next();}">&gt;</a></li>
-                        <li class="next"><a href="javascript:void(0)" data-bind="click: function(e){e.go().last();}">&gt;&gt;</a></li>
+                        <li class="previous"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().first(); }">&lt;&lt;</a></li>
+                        <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().previous(); }">&lt;</a></li>
+                        <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().page(1); }">1</a></li>
+                        <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().next(); }">&gt;</a></li>
+                        <li class="next"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().last(); }">&gt;&gt;</a></li>
                     </ul>
                 </nav>
             </div>
@@ -243,75 +243,14 @@
             </div>
         </div>
     </div>
-
-    <!--site hızlı açılması için en altta çağırıyoruz-->
+     <!--site hızlı açılması için en altta çağırıyoruz-->
     <script src="JavaScripts/jquery-2.1.3.js"></script>
     <script src="JavaScripts/knockout-3.3.0.js"></script>
-    <script src="JavaScripts/bootstrap.js"></script>
+    <script src="JavaScripts/bootstrap.js"></script>    
     <script src="JavaScripts/PenetrasyonApi.js"></script>
     <script src="JavaScripts/PenetrasyonMV.js"></script>
-    <script type="text/javascript" src="JavaScripts/less.js"></script>
+
+   
 </body>
 </html>
-    <!--
-    ----------------------------------miracin yaptığı kısım-------------------
-
-        <!DOCTYPE html>
-    <html>
-    <head>
-        <title>PENETRASYON İŞLEMLERİ</title>
-        <meta charset="utf-8">
-        <script src="JavaScripts/jquery-2.1.3.js"></script>
-        <script src="JavaScripts/knockout-3.3.0.js"></script>
-        <script src="JavaScripts/PenetrasyonApi.js"></script>
-        <script src="JavaScripts/PenetrasyonMV.js"></script>
-        <link href="Content/bootstrap.css" rel="stylesheet" />
-        <link rel="stylesheet/less" type="text/css" href="Content/style.less" />
-        <script type="text/javascript"  src="JavaScripts/less.js"></script>
-
-    </head>
-    <body>
-         <style>
-            #customer {cursor: pointer;}
-             #customer tr:hover {  background: #e16161;  }
-            .selected { background: #ff6a00;   }
-        </style>
-         <button id="Button1" data-bind="click: getCustomer"> Müşteri Ara</button>
-        <center>
-          <select id="Select1" data-bind="options: sList,
-        optionsText: 'sitename',
-        optionsValue: 'siteid',
-        value: selectedSiteValue,
-        optionsCaption: 'Site Seçiniz'"></select>
-
-             <select id="Select2" data-bind="options: bList,
-        optionsText: 'blockname',
-        optionsValue: 'blockid',
-        value: selectedBlockValue,
-        optionsCaption: 'Blok Seçiniz'"></select>
-
-        <form id="form">
-                <table border="1" id="customer" >
-                    <thead>
-                        <tr>
-                            <th>Müşteri ID</th>
-                            <th>Müşteri ismi</th>
-                            <th>Müşteri Soyadı</th>
-                            <th>Daire</th>
-                            <th>GSM</th>
-                        </tr>
-                    </thead>
-                    <tbody data-bind="foreach:cList ">
-                        <tr data-bind="click: function (data, evt) { $parent.select(data, evt); }">
-                            <td data-bind="text: customerid"></td>
-                            <td data-bind="text: customername"></td>
-                            <td data-bind="text: customersurname"></td>
-                            <td data-bind="text: flat"></td>
-                            <td data-bind="text: gsm"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-            </center>
-    </body>
-    </html>-->
+  
