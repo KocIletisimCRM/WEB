@@ -1,5 +1,10 @@
 ﻿
+@font-face {
+  font-family: 'Glyphicons Halflings';
 
+  src: url('../Content/fonts/glyphicons-halflings-regular.eot');
+  src: url('../Content/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../Content/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../Content/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../Content/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../Content/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -122,13 +127,20 @@
 
 
 .cls-border-black{
-    border: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
 }
 .cls-padding-0px{
     padding: 0px !important;
 }
+.cls-border-radius-0px{
+    border-radius: 0px !important;
+}
 .cls-padding-top-15px{
     padding: 15px 0 0 0 !important;
+}
+.cls-margin-top-3px{
+    margin-top: 3px;
 }
 .cls-head{
     height: 3em;
@@ -157,5 +169,48 @@
 }
 .cls-task{
     margin-top: 20px;
-    border: 1px solid black;
+}
+.cls-icon-padding{
+    padding: 0 30px 0 30px;
+}
+
+
+
+
+
+
+.cls-container{
+    width: 100%;
+}
+.panel-heading span {
+    margin-top: -20px;
+    font-size: 15px;
+}
+
+.clickable {
+    cursor: pointer;
+}  
+
+/* BACKGRONUD-COLOR STARTS*/
+.cls-bgcolor-blue{
+    background-color: blue;
+}
+.cls-bgcolor-red{
+    background-color: red;
+}
+.cls-bgcolor-gray{
+    background-color: gray;
+}
+/*BACKGRONUD-COLOR FİNİSH*/
+.cls-panel-body{
+    min-height: 100px;
+}
+.cls-form-control{
+    margin: 3px 0 3px 0;
+}
+.cls-button-control{
+    margin: 3px;
+}
+.cls-right{
+    float: right;
 }
