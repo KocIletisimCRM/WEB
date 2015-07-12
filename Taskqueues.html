@@ -16,13 +16,8 @@
 
     <!-- Custom CSS -->
     <link href="Content/Taskqueues.css" rel="stylesheet" />
+    <link href="Content/style.css" rel="stylesheet" />
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
@@ -69,7 +64,7 @@
 
 
         <div class="cls-header-nav">
-            <a href="#menu-toggle" class="btn btn-default cls-hamburger-menu" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
+            <a href="#menu-toggle" class="btn btn-default cls-hamburger-menu" id="menu-toggle"></span></a>
         </div>
         <div id="page-content-wrapper">
             <div class="container-fluid cls-padding-0px">
@@ -87,14 +82,14 @@
                                 <thead>
                                     <tr>
                                         <th class="success"></th>
-                                        <th class="warning">Müşteri No</th>
-                                        <th class="info">Müşteri Adı</th>
-                                        <th class="info">Segment</th>
-                                        <th class="danger">Task Tipi</th>
-                                        <th class="success">Task Durumu</th>
-                                        <th class="success">Site</th>
-                                        <th class="info">Task No</th>
-                                        <th class="danger">Alt Akış No</th>
+                                        <th class="warning">ID</th>
+                                        <th class="info">Adı</th>
+                                        <th class="info">Soyadı</th>
+                                        <th class="danger">Site</th>
+                                        <th class="success">Blok</th>
+                                        <th class="success">Daire</th>
+                                        <th class="info">GSM</th>
+                                        <th class="danger">Açıklama</th>
 
                                     </tr>
                                 </thead>
@@ -107,10 +102,10 @@
                                     <!-- ko foreach: datasource -->
                                     <tr data-bind="click: function (data, evt) { $parent.select(data, evt); }">
                                         <td><button type="button" class="modal_popup" data-toggle="modal" data-target="#myModal" data-bind="click: function (data, evt) { $parent.getCustomerCard($index()); }">Düzenle</button></td>
-                                        <td data-bind=""></td>
-                                        <td data-bind=""></td>
-                                        <td data-bind=""></td>
-                                        <td data-bind=""></td>
+                                        <td data-bind="">fer</td>
+                                        <td data-bind="">gre</td>
+                                        <td data-bind="">gre</td>
+                                        <td data-bind="">gre</td>
                                         <td data-bind=""></td>
                                         <td data-bind=""></td>
                                         <td data-bind=""></td>
