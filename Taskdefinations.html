@@ -43,12 +43,13 @@
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
 
-        <div class="cls-header-nav cls-fixed">
+        <div class="cls-header-nav">
             <a href="#menu-toggle" class="btn btn-default cls-hamburger-menu" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
         </div>
         <div id="page-content-wrapper cls-padding-0px">
-            <!--filtrele TASKQUEUE start-->
-            <div class="cls-container cls-fixed-filter">
+            
+            <!--filtrele TASK start-->
+            <div class="cls-container">
                 <div class="cls-container">
                     <div class="row cls-padding-0px">
                         <div class="col-md-12 cls-padding-0px cls-border-radius-0px">
@@ -59,22 +60,19 @@
                                 </div>
                                 <div class="panel-body cls-padding-0px">
                                     <form action="Taskqueues.html" method="post">
-                                        <div class="col-md-4 cls-panel-body">
+                                        <div class="col-md-2 cls-panel-body">
                                             <input type="text" placeholder="Task Adı" class="form-control cls-form-control" />
-                                            <input type="text" placeholder="Site Adı" class="form-control cls-form-control" />
-                                            <input type="text" placeholder="Müşteri Adı" class="form-control cls-form-control" />
-                                            <input type="text" placeholder="Müşteri Statüsü" class="form-control cls-form-control" />
                                         </div>
-                                        <div class="col-md-4 cls-panel-body">
-                                            <input type="text" placeholder="ISS Bilgisi" class="form-control cls-form-control" />
-                                            <input type="date" placeholder="Atanma Tarihi" class="form-control cls-form-control" />
-                                            <input type="date" placeholder="Randevu Tarihi" class="form-control cls-form-control" />
-                                            <input type="date" placeholder="Sonlanma Tarihi" class="form-control cls-form-control" />
+                                        <div class="col-md-2 cls-panel-body">
+                                            <input type="text" placeholder="Görevli Adı" class="form-control cls-form-control" />
                                         </div>
-                                        <div class="col-md-4 cls-panel-body">
-                                            <input type="text" placeholder="Personel Adı" class="form-control cls-form-control" />
-                                            <input type="text" placeholder="Task Durumu" class="form-control cls-form-control" />
-                                            <input type="text" placeholder="Açıklama" class="form-control cls-form-control" />
+                                        <div class="col-md-2 cls-panel-body">
+                                            <input type="text" placeholder="Task Türü" class="form-control cls-form-control" />
+                                        </div>
+                                        <div class="col-md-2 cls-panel-body">
+                                            <input type="text" placeholder="İlgi" class="form-control cls-form-control" />
+                                        </div>
+                                        <div class="col-md-3 cls-panel-body">
                                             <button type="button" class="btn btn-primary cls-right cls-button-control">Filtrele</button>
                                             <button type="button" class="btn btn-danger cls-right cls-button-control">Temizle</button>
                                         </div>
@@ -85,10 +83,9 @@
                     </div>
                 </div>
             </div>
-            <!--filtrele TASKQUEUE finish-->
-
-            <div class="container-fluid cls-padding-0px cls-deneme-height ">
-                <div class="row cls-margin-task">
+            <!--filtrele TASK finish-->
+            <div class="container-fluid cls-padding-0px">
+                <div class="row">
                     <div class="col-lg-12 cls-padding-0px">
                         <div class="col-lg-12 cls-task cls-padding-0px">
                             <table class="table" id="customer" data-pagination="true" data-search="true">

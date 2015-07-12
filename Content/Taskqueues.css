@@ -214,3 +214,25 @@
 .cls-right{
     float: right;
 }
+
+
+
+
+
+
+
+.cls-deneme-height{
+    height:1000px !important;
+}
+.cls-fixed{
+    position: fixed !important;
+    z-index: 45848;
+}
+.cls-fixed-filter{
+    position: fixed !important;
+    margin-top: 4.3em;
+    z-index: 4584;
+}
+.cls-margin-task{
+    margin-top: 18em;
+}
