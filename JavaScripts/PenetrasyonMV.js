@@ -21,6 +21,8 @@ var penetrasyon = function () {
     var self = this;
     this.customerid = ko.observable();
     this.customername = ko.observable();
+    this.sitename = ko.observable();
+    this.regionname = ko.observable();
     this.selectedSiteValue = ko.observable();
     this.selectedBlockValue = ko.observable();
     this.selectedCustomerStatusValue = ko.observable();
@@ -34,6 +36,7 @@ var penetrasyon = function () {
     });
     this.sList = ko.observableArray([]);
     this.bList = ko.observableArray([]);
+    this.regionList = ko.observableArray([]);
     this.closedtasks = ko.observable();
     this.customerCardList = ko.observableArray([]);
     this.statusList = ko.observableArray([]);
@@ -66,6 +69,7 @@ var penetrasyon = function () {
     this.selectedCustomer = ko.observable();
 }
 
+
 penetrasyon.prototype.select = function (d, e) {
     $("#customer tr").removeClass("selected");
     $(e.currentTarget).addClass("selected");
@@ -74,7 +78,14 @@ penetrasyon.prototype.select = function (d, e) {
 penetrasyon.prototype.findCustomer = function (d,e) {
     var self = this;
     if (e && (e.which == 1 || e.which == 13)) {
-        Customer.getCustomer(null, null, self.customername(), self.closedtasks(), function (a, b, c) { self.cList(a); }, null);
+        Customer.getCustomer(null, null, self.customername(),self.regionname(), self.closedtasks(), function (a, b, c) { self.cList(a); }, null);
+    }
+    return true;
+};
+penetrasyon.prototype.findSite = function (d, e) {
+    var self = this;
+    if (e && (e.which == 1 || e.which == 13)) {
+        Customer.getCustomer(self.sitename(), null, self.customername(),self.regionname(), self.closedtasks(), function (a, b, c) { self.cList(a); }, null);
     }
     return true;
 };
@@ -102,7 +113,7 @@ penetrasyon.prototype.getCustomer = function (){
     var self = this;
     //if (e && (e.which == 1 || e.which == 13)) { }
     self.pageNo(0);
-    Customer.getCustomer(self.selectedSiteValue(), self.selectedBlockValue(), null, self.closedtasks(),
+    Customer.getCustomer(self.selectedSiteValue(), self.selectedBlockValue(),self.customername(),self.regionname(),self.closedtasks(),
         function (a, b, c) {
             self.cList(a);
         }, null);
@@ -110,6 +121,13 @@ penetrasyon.prototype.getCustomer = function (){
 penetrasyon.prototype.getSite = function () {
     var self = this;
     Site.getSite(function (a, b, c) { self.sList(a); }, null);
+};
+penetrasyon.prototype.getRegions = function (d,e) {
+    var self = this;
+    if (e && (e.which == 1 || e.which == 13)) {
+        Customer.getCustomer(null, null, self.customername(), self.regionname(), self.closedtasks(), function (a, b, c) { self.cList(a); }, null);
+    }
+    return true;
 };
 penetrasyon.prototype.CustomerStatus = function () {
     var self = this;
@@ -143,12 +161,19 @@ penetrasyon.prototype.getCustomerCard = function (index) {
     self.selectedCustomer(obj);
     //getCustomerCard.CustomerCard(self.customerid(),function (a, b, c) {self.customerCardList(a) });
 };
-penetrasyon.prototype.saveCustomer = function () {
+penetrasyon.prototype.saveCustomer = function (d,e) {
     var self = this;
+    self.selectedCustomer().customer_status = { id: $("#customerstatus").val() };
+    self.selectedCustomer().issStatus = { id: $("#issstatus").val() };
+    self.selectedCustomer().netStatus = { id: $("#netstatus").val() };
+    self.selectedCustomer().gsmKullanımıStatus = { id: $("#gsmstatus").val() };
+    self.selectedCustomer().telStatus = { id: $("#telstatus").val() };
+    self.selectedCustomer().TvKullanımıStatus = { id: $("#tvstatus").val() };
     saveCustomer.saveCt(function (a, b, c) { }, null);
-    p.getCustomer();
+    Customer.getCustomer(self.sitename(),self.selectedBlockValue(),self.customername(),self.regionname(),self.closedtasks(),function (a, b, c) { }, null)
 
 };
+
 penetrasyon.prototype.getPageNumbers = function () {
     var self = this;
     var pn = [];
