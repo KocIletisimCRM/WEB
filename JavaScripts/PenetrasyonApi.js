@@ -1,7 +1,7 @@
 ﻿if (!window.PenetrasyonApi) {
 
    baseURI = "http://localhost:50752/api"
-   //baseURI = "http://crmapitest.kociletisim.com.tr:8083/api"
+   // baseURI = "http://crmapitest.kociletisim.com.tr:8083/api"
 
    window.Customer = (function () {
 
