@@ -17,8 +17,6 @@
     <!-- Custom CSS -->
     <link href="Content/Taskqueues.css" rel="stylesheet" />
     <link href="Content/style.css" rel="stylesheet" />
-
-
 </head>
 
 <body>
@@ -60,20 +58,54 @@
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
 
-
-
-
         <div class="cls-header-nav">
-            <a href="#menu-toggle" class="btn btn-default cls-hamburger-menu" id="menu-toggle"></span></a>
+            <a href="#menu-toggle" class="btn btn-default cls-hamburger-menu" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
         </div>
-        <div id="page-content-wrapper">
-            <div class="container-fluid cls-padding-0px">
-                <div class="row">
-                    <div class="col-lg-12 cls-padding-0px cls-border-black">
-                        <div class="col-lg-12 cls-filtre-head"><span class="glyphicon glyphicon glyphicon-hand-down cls-hand-yon" aria-hidden="true"></span>Filtreleme Seçenekleri</div>
+        <div id="page-content-wrapper cls-padding-0px">
+            <!--filtrele TASKQUEUE start-->
+            <div class="cls-container">
+                <div class="cls-container">
+                    <div class="row cls-padding-0px">
+                        <div class="col-md-12 cls-padding-0px cls-border-radius-0px">
+                            <div class="panel panel-primary cls-border-radius-0px">
+                                <div class="panel-heading cls-border-radius-0px cls-margin-top-3px">
+                                    <h3 class="panel-title">Filtre Seçenekleri</h3>
+                                    <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                                </div>
+                                <div class="panel-body cls-padding-0px">
+                                    <form action="Taskqueues.html" method="post">
+                                        <div class="col-md-4 cls-panel-body">
+                                            <input type="text" placeholder="Task Adı" class="form-control cls-form-control" />
+                                            <input type="text" placeholder="Site Adı" class="form-control cls-form-control" />
+                                            <input type="text" placeholder="Müşteri Adı" class="form-control cls-form-control" />
+                                            <input type="text" placeholder="Müşteri Statüsü" class="form-control cls-form-control" />
+                                        </div>
+                                        <div class="col-md-4 cls-panel-body">
+                                            <input type="text" placeholder="ISS Bilgisi" class="form-control cls-form-control"/>
+                                            <input type="date" placeholder="Atanma Tarihi" class="form-control cls-form-control" />
+                                            <input type="date" placeholder="Randevu Tarihi" class="form-control cls-form-control" />
+                                            <input type="date" placeholder="Sonlanma Tarihi" class="form-control cls-form-control" />
+                                        </div>
+                                        <div class="col-md-4 cls-panel-body">
+                                            <input type="text" placeholder="Personel Adı" class="form-control cls-form-control" />
+                                            <input type="text" placeholder="Task Durumu" class="form-control cls-form-control" />
+                                            <input type="text" placeholder="Açıklama" class="form-control cls-form-control" />
+                                            <button type="button" class="btn btn-primary cls-right cls-button-control">Filtrele</button>
+                                            <button type="button" class="btn btn-danger cls-right cls-button-control">Temizle</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!--filtrele TASKQUEUE finish-->
+
+            <!--filtrele TASK start-->
+
+
+            <!--filtrele TASK finish-->
             <div class="container-fluid cls-padding-0px">
                 <div class="row">
                     <div class="col-lg-12 cls-padding-0px">
@@ -96,7 +128,7 @@
                                 <tbody>
                                     <!-- ko if:(pageNo()==0) -->
                                     <tr>
-                                        <td colspan="9" style="background: url('/Content/images/progressbar.gif') center center no-repeat;"></td>
+                                        <td colspan="9" style="background: url('/Content/images/progresbar.gif') center center no-repeat;"></td>
                                     </tr>
                                     <!-- /ko -->
                                     <!-- ko foreach: datasource -->
@@ -135,6 +167,24 @@
         $("#menu-toggle").click(function (e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $('.panel-heading span.clickable').on("click", function (e) {
+                if ($(this).hasClass('panel-collapsed')) {
+                    // expand the panel
+                    $(this).parents('.panel').find('.panel-body').slideDown();
+                    $(this).removeClass('panel-collapsed');
+                    $(this).find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                }
+                else {
+                    // collapse the panel
+                    $(this).parents('.panel').find('.panel-body').slideUp();
+                    $(this).addClass('panel-collapsed');
+                    $(this).find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                }
+            });
         });
     </script>
 
