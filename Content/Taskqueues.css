@@ -96,9 +96,10 @@
 }
 
 @media(min-width:768px) {
-    #wrapper{
+    #wrapper {
         padding-left:250px;
     }
+            
  
     #wrapper.toggled {
         padding-left: 0;
