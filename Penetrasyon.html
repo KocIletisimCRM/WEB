@@ -39,7 +39,7 @@
                 <div class="col-md-3 mobile-col-md-3">
                   <!-- <input class="form-control" type="text" placeholder="Kimi Aradınız, Bulalım..." data-bind="value: customername, valueUpdate: 'keydown', event: { keypress: findCustomer }">   -->
               <input type="text" data-bind="" /> 
-               </div>
+                </div>
                 <div class="col-md-1 mobile-col-md-1">
                     <input class="btn btn-default" type="button" value="ARA" data-bind="click: findCustomer">
                 </div>
@@ -57,21 +57,21 @@
                 <div>
                     <label>
                         <input type="checkbox" data-bind="checked: closedtasks ">Kapalı Tasklar Getirilsin</label>
-                    <nav class="text-center">
-                        <ul class="pagination">
-                            <li class="previous"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().first(); }">&lt;&lt;</a></li>
-                            <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().previous(); }">&lt;</a></li>
+                     <nav class="text-center">
+                    <ul class="pagination">
+                        <li class="previous"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().first(); }">&lt;&lt;</a></li>
+                        <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().previous(); }">&lt;</a></li>
                             <!-- <li><select class="form-control" data-bind="options: p.getPageNumbers(),
                                                                     value: pageNo
                                                                     "></select></li> -->
-                            <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().next(); }">&gt;</a></li>
-                            <li class="next"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().last(); }">&gt;&gt;</a></li>
-                        </ul>
-                    </nav>
+                        <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().next(); }">&gt;</a></li>
+                        <li class="next"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().last(); }">&gt;&gt;</a></li>
+                    </ul>
+                </nav>
                     <table class="table" id="customer" data-pagination="true" data-search="true">
                         <thead>
                             <tr>
-                                <th class="success"></th> 
+                                <th class="success"></th>
                                 <th class="warning">ID</th>
                                 <th class="info">Adı</th>
                                 <th class="info">Soyadı</th>
@@ -120,20 +120,20 @@
                 </nav>
             </div>
         </div>
-
-
+        
+        
     </section>
     <footer></footer>
 
     <!-- Modal Popup -->
-    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  >
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Penetrasyon Düzenleme Formu</h4>
                 </div>
-                <div class="modal-body" data-bind="with: selectedCustomer">
+                    <div class="modal-body" data-bind="with: selectedCustomer">
                     <!-- Müşteri No -->
                     <div class="col-md-6 modal-col-md-12-height">Müşteri No</div>
                     <div class="col-md-6 modal-col-md-12-height">
@@ -147,14 +147,14 @@
                     <!-- Daire -->
                     <div class="col-md-6 modal-col-md-12-height">Daire</div>
                     <div class="col-md-6 modal-col-md-12-height">
-                        <div class="modal-col-md-12-height-div" data-bind="text: flat"></div>
+                            <div class="modal-col-md-12-height-div" data-bind="text: flat"></div>
                     </div>
                     <!-- Müşteri Statüsü -->
                     <div class="col-md-6 modal-col-md-12-height">Müşteri Statüsü</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
                         <select id="customerstatus" class="form-control input-sm" data-bind="options: $parent.statusList,
-                                                                        optionsText: 'Text',
-                                                                        optionsValue: 'ID',
+                                                                            optionsText: 'Text',
+                                                                            optionsValue: 'ID',
                                                                         value:(customer_status && customer_status.ID || 0),
                                                                         optionsCaption: 'Müşteri Statüsü Seçiniz...'">
                         </select>
@@ -163,28 +163,26 @@
                     <div class="col-md-6 modal-col-md-12-height">İnternet SS</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
                         <select id="issstatus" class="form-control input-sm" id ="customerstatus" data-bind="options: $parent.ISSList,
-                                                                        optionsText: 'issText',
-                                                                        optionsValue: 'id',
-                                                                        value:(issStatus &&issStatus.id||0),
-                                                                        optionsCaption: 'ISS Seçiniz...'">
-                        </select>
+                                                                            optionsText: 'issText',
+                                                                            optionsValue: 'id',
+                                                                            value:iss,
+                                                                            optionsCaption: 'ISS Seçiniz...'" ></select>
                     </div>
                     <!-- İnternet Ücreti -->
                     <div class="col-md-6 modal-col-md-12-height">İnternet Ücreti</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
                         <select id="netstatus" class="form-control input-sm" data-bind="options: $parent.NetStatusList,
-                                                                        optionsText: 'netText',
-                                                                        optionsValue: 'id',
-                                                                        value: (netStatus && netStatus.id ||0),
-                                                                        optionsCaption: 'Net Ücreti Seçiniz...'">
-                        </select>
+                                                                    optionsText: 'netText',
+                                                                    optionsValue: 'id',
+                                                                    value: netstatu,
+                                                                    optionsCaption: 'Net Ücreti Seçiniz...'" ></select>
                     </div>
                     <!-- Televizyon Kullanımı -->
                     <div class="col-md-6 modal-col-md-12-height">Televizyon Kullanımı</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
                         <select id="tvstatus" class="form-control input-sm" data-bind="options: $parent.tvStatusList,
-    optionsText: 'tvKullanımıText',
-    optionsValue: 'id',
+                                                                        optionsText: 'tvKullanımıText',
+                                                                        optionsValue: 'id',
     value: (TvKullanımıStatus && TvKullanımıStatus.id || 0),
     optionsCaption: 'Tv Kullanımı Seçiniz...'">
                         </select>
@@ -193,8 +191,8 @@
                     <div class="col-md-6 modal-col-md-12-height">Turkcell Tv Kullanımı</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
                         <select id="turkcelltvstatus" class="form-control input-sm" data-bind="options: $parent.TurkcelTvStatusList,
-    optionsText: 'TurkcellTvText',
-    optionsValue: 'id',
+                                                                         optionsText: 'TurkcellTvText',
+                                                                            optionsValue: 'id',
     value:'',
     optionsCaption: 'TTV + Kullanımı Seçiniz...'">
                         </select>
@@ -203,8 +201,8 @@
                     <div class="col-md-6 modal-col-md-12-height">GSM Kullanımı</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
                         <select id="gsmstatus" class="form-control input-sm" data-bind="options: $parent.GsmStatusList,
-    optionsText: 'gsmText',
-    optionsValue: 'id',
+                                                                        optionsText: 'gsmText',
+                                                                        optionsValue: 'id',
     value: (gsmKullanımıStatus && gsmKullanımıStatus.id ||0),
     optionsCaption: 'Gsm Kullanımı Seçiniz...'">
                         </select>
@@ -212,7 +210,7 @@
                     <!-- Emptor Müşteri Numarası -->
                     <div class="col-md-6 modal-col-md-12-height">Emptor Müşteri Numarası</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <input class="form-control input-sm" type="text" placeholder="" data-bind="value: emptorcustomernum">
+                        <input class="form-control input-sm" type="text" placeholder="" data-bind="value:emptorcustomernum" >
                     </div>
                     <!-- TC Kimlik No -->
                     <div class="col-md-6 modal-col-md-12-height">TC Kimlik No</div>
@@ -247,7 +245,7 @@
                     <!-- Açıklama -->
                     <div class="col-md-6 modal-col-md-12-height">Açıklama</div>
                     <div class="col-md-6 modal-col-md-12-height-select">
-                        <input class="form-control input-sm" type="text" placeholder="" data-bind="value: description">
+                            <input class="form-control input-sm" type="text" placeholder="" data-bind="value: description">
                     </div>
                     <!-- Kat Ziyareti Taskı Kapatılsın mı? -->
                     <div class="col-md-6 modal-col-md-12-height">Kat Ziyareti Taskı Kapatılsın mı?</div>
@@ -256,19 +254,19 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
-                    <button type="button" class="btn btn-success" data-bind="click: saveCustomer" data-dismiss="modal">Kaydet</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                    <button type="button" class="btn btn-primary" data-bind="click: saveCustomer" data-dismiss="modal" >Kaydet</button>
                 </div>
             </div>
         </div>
     </div>
-    <!--site hızlı açılması için en altta çağırıyoruz-->
+     <!--site hızlı açılması için en altta çağırıyoruz-->
     <script src="JavaScripts/jquery-2.1.3.js"></script>
     <script src="JavaScripts/jquery-2.1.3.min.js"></script>
     <script src="JavaScripts/knockout-3.3.0.js"></script>
-    <script src="JavaScripts/bootstrap.js"></script>
+    <script src="JavaScripts/bootstrap.js"></script>    
     <script src="JavaScripts/PenetrasyonApi.js"></script>
     <script src="JavaScripts/PenetrasyonMV.js"></script>
-
+      
 </body>
 </html>
