@@ -28,8 +28,7 @@
             <ul class="sidebar-nav">
                 <li class="cls-head">KOÇ İLETİŞİM</li>
                 <li class="sidebar-brand">
-                    <a href="#">
-                        KOÇ İLETİŞİM
+                    <a href="#">KOÇ İLETİŞİM
                     </a>
                 </li>
                 <li>
@@ -60,7 +59,10 @@
                                 <div class="panel-body cls-padding-0px">
                                     <form action="Taskqueues.html" method="post">
                                         <div class="col-md-4 cls-panel-body">
-                                            <input type="text" placeholder="Task Adı" class="form-control cls-form-control" />
+                                            <div class="bfh-selectbox" data-name="selectbox3" data-value="12" data-filter="true">
+                                                <div data-value="1">Option 1</div>
+                                                <div data-value="2">Option 2</div>
+                                            </div>
                                             <input type="text" placeholder="Site Adı" class="form-control cls-form-control" />
                                             <input type="text" placeholder="Müşteri Adı" class="form-control cls-form-control" />
                                             <input type="text" placeholder="Müşteri Statüsü" class="form-control cls-form-control" />
@@ -125,7 +127,8 @@
                                     <!-- /ko -->
                                     <!-- ko foreach: datasource -->
                                     <tr data-bind="click: function (data, evt) { $parent.select(data, evt); }">
-                                        <td><button type="button" class="modal_popup" data-toggle="modal" data-target="#myModal" data-bind="click: function (data, evt) { $parent.getCustomerCard($index()); }">Düzenle</button></td>
+                                        <td>
+                                            <button type="button" class="modal_popup" data-toggle="modal" data-target="#myModal" data-bind="click: function (data, evt) { $parent.getCustomerCard($index()); }">Düzenle</button></td>
                                         <td data-bind="">fer</td>
                                         <td data-bind="">gre</td>
                                         <td data-bind="">gre</td>
