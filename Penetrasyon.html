@@ -57,17 +57,17 @@
                 <div>
                     <label>
                         <input type="checkbox" data-bind="checked: closedtasks ">Kapalı Tasklar Getirilsin</label>
-                     <nav class="text-center">
-                    <ul class="pagination">
-                        <li class="previous"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().first(); }">&lt;&lt;</a></li>
-                        <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().previous(); }">&lt;</a></li>
+                    <nav class="text-center">
+                        <ul class="pagination">
+                            <li class="previous"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().first(); }">&lt;&lt;</a></li>
+                            <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().previous(); }">&lt;</a></li>
                             <!-- <li><select class="form-control" data-bind="options: p.getPageNumbers(),
-                                                                    value: pageNo
-                                                                    "></select></li> -->
-                        <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().next(); }">&gt;</a></li>
-                        <li class="next"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().last(); }">&gt;&gt;</a></li>
-                    </ul>
-                </nav>
+                                                    value: pageNo
+                                                    "></select></li> -->
+                            <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().next(); }">&gt;</a></li>
+                            <li class="next"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().last(); }">&gt;&gt;</a></li>
+                        </ul>
+                    </nav>
                     <table class="table" id="customer" data-pagination="true" data-search="true">
                         <thead>
                             <tr>

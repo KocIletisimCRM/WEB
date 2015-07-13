@@ -86,6 +86,17 @@
             </div>
             <!--filtrele TASKQUEUE finish-->
 
+            <!--pagination Starts-->
+            <nav class="text-center">
+                <ul class="pagination">
+                    <li class="previous"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().first(); }">&lt;&lt;</a></li>
+                    <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().previous(); }">&lt;</a></li>
+                    <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().next(); }">&gt;</a></li>
+                    <li class="next"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().last(); }">&gt;&gt;</a></li>
+                </ul>
+            </nav>
+            <!--pagination finish-->
+
             <div class="container-fluid cls-padding-0px cls-deneme-height ">
                 <div class="row cls-margin-task">
                     <div class="col-lg-12 cls-padding-0px">
@@ -131,6 +142,8 @@
                     </div>
                 </div>
             </div>
+            
+            <!--pagination Starts-->
             <nav class="text-center">
                 <ul class="pagination">
                     <li class="previous"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().first(); }">&lt;&lt;</a></li>
@@ -139,6 +152,8 @@
                     <li class="next"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().last(); }">&gt;&gt;</a></li>
                 </ul>
             </nav>
+            <!--pagination finish-->
+
         </div>
 
         <!-- /#page-content-wrapper -->
