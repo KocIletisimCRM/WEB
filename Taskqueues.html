@@ -55,7 +55,7 @@
                             <div class="panel panel-primary cls-border-radius-0px">
                                 <div class="panel-heading cls-border-radius-0px cls-margin-top-3px">
                                     <h3 class="panel-title">Filtre Seçenekleri</h3>
-                                    <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                                    <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up cls-z-index"></i></span>
                                 </div>
                                 <div class="panel-body cls-padding-0px">
                                     <form action="Taskqueues.html" method="post">
@@ -131,6 +131,14 @@
                     </div>
                 </div>
             </div>
+            <nav class="text-center">
+                <ul class="pagination">
+                    <li class="previous"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().first(); }">&lt;&lt;</a></li>
+                    <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().previous(); }">&lt;</a></li>
+                    <li><a href="javascript:void(0)" data-bind="click: function (e) { e.go().next(); }">&gt;</a></li>
+                    <li class="next"><a href="javascript:void(0)" data-bind="click: function (e) { e.go().last(); }">&gt;&gt;</a></li>
+                </ul>
+            </nav>
         </div>
 
         <!-- /#page-content-wrapper -->
