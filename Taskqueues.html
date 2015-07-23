@@ -9,17 +9,28 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>koc web</title>
+    <title>KOC WEB</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
-
+   
     <!-- Custom CSS -->
     <link href="Content/Taskqueues.css" rel="stylesheet" />
     <link href="Content/style.css" rel="stylesheet" />
+    <!-- bootstrap multi select  -->
+    
+        <link rel="stylesheet" href="Content/docs/css/bootstrap-3.3.2.min.css" type="text/css">
+        <link rel="stylesheet" href="Content/docs/css/bootstrap-example.css" type="text/css">
+        <link rel="stylesheet" href="Content/docs/css/prettify.css" type="text/css">
+        <link rel="stylesheet" href="Content/dist/css/bootstrap-multiselect.css" type="text/css">
+    
+
+
 </head>
 
-<body>
+<body >
+
+  
 
     <div id="wrapper">
 
@@ -59,9 +70,13 @@
                                 <div class="panel-body cls-padding-0px">
                                     <form action="Taskqueues.html" method="post">
                                         <div class="col-md-4 cls-panel-body">
-                                            <input type="text" placeholder="Task Adı" class="form-control cls-form-control"/>
+                                                                        
+                                        <select id="example-enableFiltering-includeSelectAllOption" multiple="multiple" 
+                                            data-bind="options: tasklist, optionsText: 'taskname', value: selectedtaskname, optionsValue: 'taskid', multiselect: true">
+                                            
+                                        </select> 
                                             <input type="text" placeholder="Site Adı" class="form-control cls-form-control" />
-                                            <input type="text" placeholder="Müşteri Adı" class="form-control cls-form-control" />
+                                            <input type="text" placeholder="Müşte ri Adı" class="form-control cls-form-control" />
                                             <input type="text" placeholder="Müşteri Statüsü" class="form-control cls-form-control" />
                                         </div>
                                         <div class="col-md-4 cls-panel-body">
@@ -74,7 +89,7 @@
                                             <input type="text" placeholder="Personel Adı" class="form-control cls-form-control" />
                                             <input type="text" placeholder="Task Durumu" class="form-control cls-form-control" />
                                             <input type="text" placeholder="Açıklama" class="form-control cls-form-control" />
-                                            <button type="button" class="btn btn-primary cls-right cls-button-control">Filtrele</button>
+                                            <button data-bind="click:getTaskName" type="button" class="btn btn-primary cls-right cls-button-control">Filtrele</button>
                                             <button type="button" class="btn btn-danger cls-right cls-button-control">Temizle</button>
                                         </div>
                                     </form>
@@ -105,14 +120,8 @@
                                 <thead>
                                     <tr>
                                         <th class="success"></th>
-                                        <th class="warning">ID</th>
-                                        <th class="info">Adı</th>
-                                        <th class="info">Soyadı</th>
-                                        <th class="danger">Site</th>
-                                        <th class="success">Blok</th>
-                                        <th class="success">Daire</th>
-                                        <th class="info">GSM</th>
-                                        <th class="danger">Açıklama</th>
+                                        <th class="warning">taskorderno</th>
+                                        <th class="info">taskadı</th>
 
                                     </tr>
                                 </thead>
@@ -122,18 +131,14 @@
                                         <td colspan="9" style="background: url('/Content/images/progresbar.gif') center center no-repeat;"></td>
                                     </tr>
                                     <!-- /ko -->
-                                    <!-- ko foreach: datasource -->
+                                    <!-- ko foreach: taskqueuelist -->
                                     <tr data-bind="click: function (data, evt) { $parent.select(data, evt); }">
                                         <td>
-                                            <button type="button" class="modal_popup" data-toggle="modal" data-target="#myModal" data-bind="click: function (data, evt) { $parent.getCustomerCard($index()); }">Düzenle</button></td>
-                                        <td data-bind="">fer</td>
-                                        <td data-bind="">gre</td>
-                                        <td data-bind="">gre</td>
-                                        <td data-bind="">gre</td>
-                                        <td data-bind=""></td>
-                                        <td data-bind=""></td>
-                                        <td data-bind=""></td>
-                                        <td data-bind=""></td>
+                                         <!-- <button type="button" class="modal_popup" data-toggle="modal" data-target="#myModal" data-bind="click: function (data, evt) { $parent.getCustomerCard($index()); }">Düzenle</button></td> -->
+                                       </td>
+                                         <td data-bind="text:data.rows.taskorderno"></td>
+                                        <td data-bind="text:data.rows.deleted"></td>
+
                                     </tr>
                                     <!-- /ko -->
                                 </tbody>
@@ -160,6 +165,15 @@
 
     </div>
     <!-- /#wrapper -->
+     <script type="text/javascript">
+         $(document).ready(function () {
+             $('#example-enableFiltering-optgroups').multiselect({
+                 enableFiltering: true
+             });
+         });
+                                        </script>
+
+
     <!-- jQuery -->
     <script src="JavaScripts/jquery-2.1.3.js"></script>
 
@@ -191,6 +205,35 @@
             });
         });
     </script>
+       
+    <script src="JavaScripts/jquery-2.1.3.js"></script>
+    <script src="JavaScripts/jquery-2.1.3.min.js"></script>
+    <script src="JavaScripts/knockout-3.3.0.js"></script>
+    <script src="JavaScripts/bootstrap.js"></script>    
+    <script src="JavaScripts/CRMAPI.js"></script>
+    <script src="JavaScripts/app.js"></script>
+    
+     <script type="text/javascript" src="Content/docs/js/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="Content/docs/js/bootstrap-3.3.2.min.js"></script>
+        <script type="text/javascript" src="Content/docs/js/prettify.js"></script>
+        <script type="text/javascript" src="Content/dist/js/bootstrap-multiselect.js"></example-example-enableFiltering-optgroups>
+
+      <script type="text/javascript" src="Content/dist/js/bootstrap-multiselect-collapsible-groups.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                window.prettyPrint() && prettyPrint();
+            });
+        </script>
+     <script type="text/javascript">
+         $(document).ready(function () {
+             $('#example-enableFiltering-includeSelectAllOption').multiselect({
+                 includeSelectAllOption: true,
+                 enableFiltering: true
+             });
+         });
+                                        </script>
+ 
 
 </body>
 
