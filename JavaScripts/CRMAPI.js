@@ -1,5 +1,6 @@
 ﻿if (!window.CRMAPI) {
-    baseURI = "http://localhost:50752/api/";
+    //baseURI = "http://localhost:50752/api/";
+    baseURI = "http://crmapitest.kociletisim.com.tr:8083/api"
 
     window.CRMAPI = (function () {
         var callApiMethod = function (methodPath, sendmethod, senddata, onsuccess, onerror) {
